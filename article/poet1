@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+         <meta http-equiv="Cache-Control" content="no-cache">
+         <meta charset="utf-8">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
+         <link rel="stylesheet" type="text/css" href="../css/main.css">
+
+        <title>無題（詩）</title>
+</head>
+
+ <body>
+<div class="fixed-block">
+        <div class="titleBox">
+                <h1 class="vertical-title">猫と怪獣</h1>
+                <div class="indexList">
+                        LINKS
+                        <br>
+                        ・
+                        <br>
+                        <a href="../index.html">メインページ</a>
+                        <br>
+                        <a href="../main.html">目次一覧</a>
+                        <br>
+                        <a href="../news.html">ニュース</a>
+                        <br>
+                        <a href="../aboutme.html">淡捌曇とは</a>
+                        <br>
+                        <a href="../guide.html">ガイド</a>
+                </div>
+        </div>
+</div>
+
+<!-- 追加パート -->
+<div class="categoryIndex">無題（詩）</div>
+<div class="main-content">
+質問：眠られぬ十六夜、<br>
+　月あかりに希う。<br>
+　紅葉は空へ舞う、<br>
+　目下には枯立葵。<br>
+<br>
+　彼の草木は伸び、<br>
+　然荻の風で薙ぐ。<br>
+　慰むはうち鳴く、<br>
+　痩羸した牡鹿已。<br>
+<br>
+　来る日は厳しく、<br>
+　尚痩躯は唯喘ぎ、<br>
+　汝の繊毫を撫づ。<br>
+<br>
+　鐘は山岳に響く、<br>
+　雪に佳人は酔い、<br>
+　曠世な獣と為る。
+</div><div class="space14px">
+補足：AIに条件を指定してもらい作成したソネット。<br>
+　テーマは「愛と別れ」<br>
+　縛りは「各行の句の音数は、9-11-9-11-9-11-9-11-9-11-9-11-9-11のようにする（モーラではなく音節を採用）」、「押韻はペトラルカ式である、A-B-B-A-A-B-B-A-C-D-E-C-D-Eを採用」。
+</div><div class="main-content">
+：検証として<br>
+<br>
+　ねむられぬいざよい(-aoi)<br>
+　つきあかりにこいねがう(-eau)<br>
+　もみじはそらへまう(-eau)<br>
+　もっかにはかれたちあおい(-aoi)<br>
+<br>
+　かのそうもくはのび(-aoi)<br>
+　しかしおぎのかぜでなぐ(-eau)<br>
+　なぐさむはうちなく(-iau)  *流石にこれ以上おもいつかなかった<br>
+　そうるいしたおじかのみ(aoi)<br>
+<br>
+　きたるひはきびしく(-iiu)<br>
+　なおそうくはただあえぎ(-aei)<br>
+　なのせんごうをなづ（-oau)<br>
+<br>
+　かねはさんがくにひびく(-iiu)<br>
+　ゆきにかじんはえい(-aei)<br>
+　こうせいなけものとなる(-oau)
+</div>
+
+
+<script src="../js/main.js"></script>
+ </body>
+</html>
+ </body>
+</html>
