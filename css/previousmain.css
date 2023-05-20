@@ -74,6 +74,10 @@ a{
         box-shadow: inset 30px 0px 30px -30px #10a37f, inset 30px 0px 30px -30px #efefef;
 }
 
+.del{
+        text-decoration: line-through;
+}
+
 .space14px{
         margin-left: 132px;
         height:14px;
