@@ -18,7 +18,7 @@ btn.addEventListener("change", () => {
   } else {
 		root.style.setProperty("--backgroundColour", "#fff6f4");
 		root.style.setProperty("--quoteBoxColour", "#fbf2ee");
-		root.style.setProperty("--backgroundColour", "linear-gradient(210deg, #d4a4a4, 70%, #9198e5);");
+		root.style.setProperty("--fixedBoxColour", "linear-gradient(210deg, #d4a4a4, 70%, #9198e5);");
 		root.style.setProperty("--lineColour","#d3d3d3");
 		root.style.setProperty("--boxPinkColour","#efe6e4");
 		root.style.setProperty("--boxGreenColour","#eeefe4");
