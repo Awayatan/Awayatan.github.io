@@ -485,7 +485,7 @@ background-color: var(--boxPinkColour);
 }
 
 .articleBoxBorder{
-	border: 2px solid var(--lineColour);
+	border: 2px dashed var(--lineColour);
 	border-radius: 5px;
 	margin-top: 8px;
 	margin-left: 11px;
