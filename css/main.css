@@ -562,6 +562,7 @@ transition: border-bottom 1.5s ease;
 }
 
 .articleBoxBorder{
+	position: relative;
 	border: 2px dashed var(--lineColour);
 	border-radius: 5px;
 	margin-top: 8px;
@@ -569,6 +570,18 @@ transition: border-bottom 1.5s ease;
 	width: fit-content;
 	padding: 4px 20px;
 	transition: border 1.5s ease;
+}
+
+.articleBoxBorder::before{
+	content: "＊";
+	position: absolute;
+	font-size: 35px;
+	top: 4px;
+	left: -40px;
+	height: 2px;
+	width: 70px;
+	color: var(--lineColour);
+	transition: color 1.5s ease;
 }
 
 .articleh1{
