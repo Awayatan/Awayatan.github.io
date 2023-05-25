@@ -373,7 +373,7 @@ a{
 	width: fit-content;
 	border-right: 1px solid var(--lineColour);
 	border-bottom: 1px solid var(--lineColour);
-	margin-top: 10px;
+	margin-top: 25px;
 	margin-bottom: 27px;
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 5px;
@@ -494,7 +494,7 @@ background-color: var(--boxPinkColour);
 }
 
 .textAlign{
-	textalign: center;
+	text-align: center;
 }
 
 /* 保留
