@@ -232,6 +232,12 @@ a{
 	border-bottom: 1px solid #ffffff;
 }
 
+#date{
+	font-family: "Kiwi Maru", san-serif;
+	font-weight: 300;
+	font-size: 13px;
+}
+
 #outline{
 	font-family: "Kiwi Maru", san-serif;
 	font-weight: 300;
@@ -240,12 +246,13 @@ a{
 }
 
 @media (min-width: 768px){
+
 	#outline{
-		padding-top: 0px;
+		padding-top: 3px;
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 7;
+		-webkit-line-clamp: 6;
 	}
 }
 
@@ -484,6 +491,10 @@ background-color: var(--boxPinkColour);
 	margin-top: 25px;
 	margin: bottom: 15px;
 	color: var(--fontColourMain);
+}
+
+.textAlign{
+	textalign: center;
 }
 
 /* 保留
