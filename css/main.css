@@ -1,3 +1,5 @@
+/* 2023/05/25 update */
+
 :root {
 	--backgroundColour: #fff6f4;
 	--fixedBoxColour: linear-gradient(210deg, #d4a4a4, 70%, #9198e5);
@@ -6,16 +8,21 @@
 	--boxPinkColour: #efe6e4;
 	--boxGreenColour: #e6efe4;
 	--boxBlueColour: #e4e6ef;
+	--lineOrange: #f0cc6890;
+	--lineLightblue: #c0e3ec90;
 	--fontColourMain: #111111;
 	--fontColourIndex: #343434;
 	--fontColourSmallindex: # 717171;
 	--titleareaColour: linear-gradient(90deg, #cfae9a, 70%, #d198d5);
 	--articleTitleColour: #dfae9a;
+	--opacityRate: 0;
+	--fontColourLinks: #33acb2;
 }
 
 body{
 	background-color: var(--backgroundColour);
 	margin-top: 0;
+	transition: background-color 1.5s ease;
 }
 
 a{
@@ -36,6 +43,19 @@ a{
 		user-select: none;
 		z-index: 10;
 		border-right: 2px solid var(--backgroundColour);
+		transition: border-right 1.5s ease;
+	}
+
+	#fixedBox::before{
+		content: "";
+		height: 100%;
+		width: 100%;
+		left: 0;
+		top: 0;
+		position: absolute;
+		background-color: #000000;
+		opacity: var(--opacityRate);
+		transition: opacity 1.5s ease;
 	}
 
 #titleBox{
@@ -123,6 +143,7 @@ a{
 }
 
 #indexList a:before{
+	display: inline-block;
 	content: "";
 	position: absolute;
 	right: 0;
@@ -137,6 +158,7 @@ a{
 }
 
 #indexList a:hover:before{
+	display: inline-block;
 	width: 100%;
 }
 
@@ -191,6 +213,19 @@ a{
 	width: 100%;
 	height: 265px;
 	padding-top: 10px;
+	position: relative;
+}
+
+#articleTitleArea::before{
+	content: "";
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	position: absolute;
+	background-color: #000000;
+	opacity: var(--opacityRate);
+	transition: opacity 1.5s ease;
 }
 
 #articleTitleSquare{
@@ -293,7 +328,6 @@ a{
 	margin-left: 20px;
 	margin-top: 30px;
 	border-left: 2px solid var(--lineColour);
-	z-index: -1;
 }
 
 .categoryIndex{
@@ -314,15 +348,18 @@ a{
 	background-color: var(--backgroundColour);
 	border-bottom: 2px  dashed var(--lineColour);
 	width: fit-content;
+	transition: background-color 1.5s ease, color 1.5s ease;
 }
 
 .categoryIndex:before {
+	display: inline-block;
 	content: "◎";
   position: absolute;
 	left: -10px;
 	font-size: 37px;
 	letter-spacing: -40px;
 	color: var(--lineColour);
+	transition: color 1.5s ease;
 }
 
 .categoryIndex:after{
@@ -333,7 +370,8 @@ a{
 	height: 100%;
 	width: calc(100vw - 50%);
 	background-color: var(--backgroundColour);
-	z-index: -2;
+	z-index: -1;
+	transition: background-color 1.5s ease;
 }
 
 .categoryIndexEN{
@@ -347,9 +385,11 @@ a{
 	width: fit-content;
 	font-family: 'Comfortaa', cursive;
 	border-right: 1px solid var(--lineColour);
+	transition: border-right 1.5s ease;
 }
 
 .categoryIndexEN:before{
+	display: inline-block;
 	content: "";
 	position: absolute;
 	top: 15.5px;
@@ -358,7 +398,7 @@ a{
 	width: 90px;
 	color: #d3d3d3;
 	background-color: var(--lineColour);
-	z-index: 100;
+	transition: background-color 1.5s ease;
 }
 
 .categoryIndexSmall{
@@ -377,9 +417,11 @@ a{
 	margin-bottom: 27px;
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 5px;
+	transition: color 1.5s ease, border-right 1.5s ease, border-bottom 1.5s ease, color 1.5s ease;
 	}
 
-.categoryIndexSmall:before{
+.categoryIndexSmall::before{
+	display: inline-block;
 	content: "";
 	position: absolute;
 	top: 18px;
@@ -388,10 +430,10 @@ a{
 	width: 30px;
 	color: var(--lineColour);
 	background-color: var(--lineColour);
-	z-index: 100;
+	transition: background-color 1.5s ease, color 1.5s ease;
 }
 
-.categoryIndexSmall:after{
+.categoryIndexSmall::after{
 	content: "○";
 	position: absolute;
 	font-size: 25px;
@@ -400,7 +442,7 @@ a{
 	height: 2px;
 	width: 40px;
 	color: var(--lineColour);
-	z-index: 100;
+	transition: color 1.5s ease;
 }
 
 .main-content{
@@ -419,38 +461,71 @@ a{
 	font-size: 14px;
 	letter-spacing: 2.5px;
 	line-height: 34px;
-	z-index: -2;
+	transition: color 1.5s ease, border-left 1.5s ease, border-top 1.5s ease;
+}
+
+.main-content a{
+	position: relative;
+		color: var(--fontColourLinks);
 }
 
 .boxPink{
 background-color: var(--boxPinkColour);
+transition: background-color 1.5s ease;
 }
 
 .boxGreen{
 	background-color: var(--boxGreenColour);
+	transition: background-color 1.5s ease;
 }
 
 .boxBlue{
 	background-color: var(--boxBlueColour);
+	transition: background-color 1.5s ease;
 }
+
+.lineMarker{
+	position: relative;
+	white-space: nowrap;
+}
+
+.lineMarker::before{
+	position: absolute;
+	content: "";
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.lineOrange::before{
+border-bottom: 7px solid var(--lineOrange);
+transition: border-bottom 1.5s ease;
+}
+
+.lineLightblue::before{
+	border-bottom: 7px solid var(--lineLightblue);
+	transition: border-bottom 1.5s ease;
+	}
 
 .articleBoxQuote{
 	position: relative;
 	padding: 24px 18px 22px 12px;
 	margin-left: -10px;
-	z-index: 100;
 	margin: 24px 0px 24px 10px;
 
 }
 
 .quoteBox{
-	padding: 14px 18px 12px 48px;
+	display: inline-block;
+	padding: 14px 31px 12px 41px;
 	border-radius: 12px;
 	background-color: var(--quoteBoxColour);
 	border: 1px solid #dbd2ce;
+	transition: background-color 1.5s ease;
 }
 
 .articleBoxQuote::before{
+	display: inline-block;
 	content: "";
 	position: absolute;
 	top: 0;
@@ -463,16 +538,17 @@ background-color: var(--boxPinkColour);
 	width: 29px;
 	height: 100%;
 	background-color: var(--backgroundColour);
+	transition: background-color 1.5s ease, border-left 1.5s ease, border-top 1.5s ease, border-bottom 1.5s ease;
 }
 
 .articleBox{
 	margin: 24px 0;
 	padding: 14px 14px 14px 28px;
 	position: relative;
-	z-index: 100;
 }
 
 .articleBox::before{
+	display: inline-block;
 	content: "";
 	position: absolute;
 	top: 0;
@@ -482,6 +558,7 @@ background-color: var(--boxPinkColour);
 	width: 21px;
 	height: 100%;
 	background-color: var(--backgroundColour);
+	transition: background-color 1.5s ease, border 1.5s ease;
 }
 
 .articleBoxBorder{
@@ -491,12 +568,14 @@ background-color: var(--boxPinkColour);
 	margin-left: 11px;
 	width: fit-content;
 	padding: 4px 20px;
+	transition: border 1.5s ease;
 }
 
 .articleh1{
 	font-size: 21px;
 	border-bottom: 2px dashed var(--lineColour);
 	width: fit-content;
+	transition: border-bottom 1.5s ease;
 }
 
 #endTag{
