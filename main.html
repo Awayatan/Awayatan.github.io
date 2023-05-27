@@ -1,89 +1,105 @@
 <!DOCTYPE html>
 <html lang="ja">
- <head>
-         <meta http-equiv="Cache-Control" content="no-cache">
-         <meta charset="utf-8">
-         <link rel="preconnect" href="https://fonts.googleapis.com">
-         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-         <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
-         <link rel="stylesheet" type="text/css" href="./css/main.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="淡捌曇">
+  <meta name="description" content="眠れよ罪を忘れよ。">
+  <meta property="og:site_name" content="猫と怪物">
+  <meta property="og:description" content="ねむい">
+  <meta name="format-detection" content="email=no,telephone=no,address=no">
+  <meta name="google" content="nositelinkssearchbox">
+  <meta name="google" content="notranslate">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Comfortaa:wght@300&family=Kaisei+HarunoUmi&family=Castoro+Titling&family=Kiwi+Maru:wght@300;400;500&family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/main.css">
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'qzj8snh',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
 
-        <title>目次一覧</title>
+  <title>猫と怪物</title>
 </head>
 
- <body>
-<div class="fixed-block">
-        <div class="titleBox">
-                <h1 class="vertical-title">猫と怪物</h1>
-                <div class="indexList">
-                        LINKS
-                        <br>
-                        ・
-                        <br>
-                        <a href="../index.html">メインページ</a>
-                        <br>
-                        <a href="../main.html">目次一覧</a>
-                        <br>
-                        <a href="../news.html">ニュース</a>
-                        <br>
-                        <a href="../aboutme.html">淡捌曇とは</a>
-                        <br>
-                        <a href="../guide.html">ガイド</a>
-                </div>
-        </div>
+<body>
+	<div id="fixedBox">
+		<div id="titleBox">
+			<div id="subTitle">CAT AND<br>SPECTRE</div>
+			<div id="verticalTitle">猫と怪物</div>
+		</div>
+		<div id="indexList">
+			<a href="https://www.awayatan.com/index.html">Top</a><br>
+			<a href="https://www.awayatan.com/main.html">index</a><br>
+			<a href="https://www.awayatan.com/news.html">news</a><br>
+			<a href="https://www.awayatan.com/aboutme.html">about</a><br>
+			<a href="https://www.awayatan.com/guide.html">guide</a>
+		</div>
+		<label id="toggleButton" for="darkmode">
+			<input id="darkmode" type="checkbox"/>
+		</label>
+		<!-- verなど必要に応じて
+		<div id='informationBox'></div>
+		-->
+	</div>
+
+
+	<!-- 変更はここから -->
+	<div id="articleArea">
+		<div id="articleTitleArea">
+			<div id="articleTitleSquare">
+				<div id="articleTitleEN">ROADS</div>
+			</div>
+			<div id="articleTitleMainbox">
+				<div id="articleTitleJP">径</div>
+				<div id="outline">いつでも戻って来られるし、おそらくいちばん来ることになる。</div>
+			</div>
+		</div>
+
+		<div id="articleBodyArea">
+			<div class="main-content">
+				<div class="categoryIndex">創作・オリジナル</div>
+				<div class="categoryIndexEN">Original Creation</div>
+				<div class="categoryIndexSmall boxPink">楽曲背景など</div>
+				<div class="articleBox">No Data.</div>
+				<div class="categoryIndexSmall boxBlue">エセ論文</div>
+				<div class="articleBox">No Data.</div>
+				<div class="categoryIndexSmall boxBlue">詩・小説</div>
+				<div class="articleBox">No Data.</div>
+			</div><div class="main-content">
+				<div class="categoryIndex">解説（理系科目）</div>
+				<div class="categoryIndexEN">sciences / tech etc.</div>
+				<div class="categoryIndexSmall boxGreen">数学</div>
+				<div class="articleBox">No Data.</div>
+				<div class="categoryIndexSmall boxGreen">量子力学と宇宙論</div>
+				<div class="articleBox">No Data.</div>
+			</div><div class="main-content">
+				<div class="categoryIndex">解説（文系科目）</div>
+				<div class="categoryIndexEN">humanities / liberal arts / social sciences etc.</div>
+				<div class="categoryIndexSmall boxGreen">文学</div>
+				<div class="articleBox">No Data.</div>
+				<div class="categoryIndexSmall boxGreen">哲学</div>
+				<div class="articleBox"></div>
+				<div class="categoryIndexSmall boxGreen">社会・人文・経済学</div>
+				<div class="articleBox">No Data.</div>
+				<div class="categoryIndexSmall boxGreen">国際</div>
+				<div class="articleBox">No Data.</div>
+			</div><div class="main-content">
+				<div class="categoryIndex">その他</div>
+				<div class="categoryIndexEN">Others</div>
+				<div class="articleBox">No Data.</div>
+			</div>
+		<div id="endTag">- END -</div>
+	</div>
 </div>
 
-<!-- 追加パート -->
-  <div class="categoryIndex">著作・似非論文</div>
-<div class="main-content">
-     <a href="./article/daslesen.html">読書について</a> 
-</div>
-<div class="categoryIndex">哲学</div>
-<div class="main-content">
-   <a href="./article/francephilosophy.html">フランスの哲学</a><br>
- <a href="./article/phtalk_1.html">哲学談話　「数・物理・哲学の抽象性」</a><br>
- <a href="./article/gasset1.html">「大衆の反逆」を読む 第一回</a>
-</div>
-<div class="categoryIndex">言語</div>
-<div class="main-content">
- <a href="./article/language_1.html">第一回　「発音」</a><br>
- <a href="./article/language_2.html">第二回　「名詞と動詞」</a>
-</div>
-<div class="categoryIndex">量子力学と宇宙論</div>
-<div class="main-content">
-        No Data.
-</div>
-<div class="categoryIndex">社会・人文・経済学</div>
-<div class="main-content">
-        No Data.
-</div>
-<div class="categoryIndex">文学</div>
-<div class="main-content">
-        No Data.
-</div>
-  <div class="categoryIndex">数学</div>
-<div class="main-content">
-        No Data.
-</div>
-<div class="categoryIndex">創作</div>
-<div class="main-content">
- <a href="./article/poet1.html">無題（詩）</a>
-</div>
-<div class="categoryIndex">単発記事</div>
-<div class="main-content">
-        No Data.
-</div>
-
-<!-- 固定 -->
-<div class="space14px">
-</div>
-<div class="pageMove" onclick="location.href='index.html';">
-        <a href="./index.html">メインページへ</a>
-</div>
-<div class="pageMove" onclick="location.href='main.html';">
-        <a href="./aboutme.html">淡捌曇とは</a>
-</div>
-
-<script src="./js/main.js"></script>
- </body>
+<script src="https://www.awayatan.com/js/fixedBox.js"></script>
+<script src="https://www.awayatan.com/js/darkmode.js"></script>
+</body>
 </html>
