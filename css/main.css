@@ -348,7 +348,7 @@ a{
 	background-color: var(--backgroundColour);
 	border-bottom: 2px  dashed var(--lineColour);
 	width: fit-content;
-	transition: background-color 1.5s ease, color 1.5s ease;
+	transition: background-color 1.5s ease, color 1.5s ease, border-bottom 1.5s ease;
 }
 
 .categoryIndex:before {
@@ -365,13 +365,11 @@ a{
 .categoryIndex:after{
 	content: "";
 	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: calc(100vw - 50%);
-	background-color: var(--backgroundColour);
-	z-index: -1;
-	transition: background-color 1.5s ease;
+	bottom: 0;
+	right: -1px;
+	height: 70%;
+	border-left: 2px solid var(--lineColour);
+	transition: border-left 1.5s ease;
 }
 
 .categoryIndexEN{
@@ -417,7 +415,7 @@ a{
 	margin-bottom: 27px;
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 5px;
-	transition: color 1.5s ease, border-right 1.5s ease, border-bottom 1.5s ease, color 1.5s ease;
+	transition: color 1.5s ease, border-right 1.5s ease, border-bottom 1.5s ease;
 	}
 
 .categoryIndexSmall::before{
