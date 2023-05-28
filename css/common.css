@@ -391,8 +391,8 @@ a{
 	content: "";
 	position: absolute;
 	width: 27px;
-	height: 160%;
-	top: calc(-30%);
+	height: 130%;
+	top: -15%;
 	left: -60px;
 	border-top: 2px solid var(--line-colour);
 	border-bottom: 2px solid var(--line-colour);
