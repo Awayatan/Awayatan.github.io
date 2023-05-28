@@ -1,0 +1,25 @@
+#img{
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: calc(100vw-50%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#img img{
+    display: flex;
+    align-items: cneter;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 1;
+    width: auto;
+    height: 100vh;
+    left: calc(100%-50vh);
+    transition: opacity 1.5s ease;
+}
