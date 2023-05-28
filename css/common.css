@@ -439,6 +439,7 @@ a{
 	padding: 4px 20px;
 	border: 2px dashed var(--line-colour);
 	border-radius: 5px;
+	font-family: "source-han-serif-japanese", serif;
 	transition: border 1.5s ease;
 }
 .border-box::before{
