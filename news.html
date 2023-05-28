@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Comfortaa:wght@300&family=Kaisei+HarunoUmi&family=Castoro+Titling&family=Kiwi+Maru:wght@300;400;500&family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/common.css">
   <script>
     (function(d) {
       var config = {
@@ -29,10 +29,10 @@
 </head>
 
 <body>
-	<div id="fixedBox">
-		<div id="titleBox">
-			<div id="subTitle">CAT AND<br>SPECTRE</div>
-			<div id="verticalTitle">猫と怪物</div>
+	<div id="header">
+		<div id="title-wrapper">
+			<div id="subtitle">CAT AND SPECTRE</div>
+			<div id="maintitle">猫と怪物</div>
 		</div>
 		<div id="indexList">
 			<a href="https://www.awayatan.com/index.html">Top</a><br>
@@ -44,38 +44,35 @@
 		<label id="toggleButton" for="darkmode">
 			<input id="darkmode" type="checkbox"/>
 		</label>
-		<!-- verなど必要に応じて
-		<div id='informationBox'></div>
-		-->
 	</div>
 
-
-	<!-- 変更はここから -->
-	<div id="articleArea">
-		<div id="articleTitleArea">
-			<div id="articleTitleSquare">
-				<div id="articleTitleEN">NEWS</div>
-			</div>
-			<div id="articleTitleMainbox">
-				<div id="articleTitleJP">お知らせ</div>
-				<div id="outline">誰かに知らせる、という意味はない。</div>
-			</div>
+	<div id="content-wrapper">
+		<div id="bg-title">cat and<br>. spectre</div>
+		<div id="article-title-container">
+			<div id="article-title-container-bg"></div>
+			<div id="article-title">news</div>
+			<span id="post-date">post: 2023/05/28</span>
+			<span id="last-update-date">update: 2023/05/28</span>
+			<div id="outline">　誰かに知らせる、という意図はない。</div>
 		</div>
 
-		<div id="articleBodyArea">
+		<div id="article-wrapper">
 			<div class="main-content">
-				<div class="categoryIndex">ver 1.2　お知らせ</div>
-				<div class="categoryIndexEN">ver 1.2 news</div>
-				<div class="categoryIndexSmall boxPink">一般のおしらせ</div>
-				<div class="articleBox">20230527/ ver 1.2を公開しました。パッチノートは<a href="https://www.awayatan.com/updateinformation/ver1.2.html">こちら</a>。
-				<div class="categoryIndexSmall boxBlue">不具合情報</div>
-				<div class="articleBox">現在不具合はありません。</div>
+				<div class="heading-ja">おしらせ</div>
+				<div class="heading-en">news</div>
+				<div class="article-h1">ver 1.2を公開しました。(2023/05/28)</div>
+				<div class="article-box">　ver1.2のパッチノートは<a href="https://www.awayatan.com/updateinformation/ver1.2.html">こちら</a>。</div>
 			</div>
-		<div id="endTag">- END -</div>
+			<div class="main-content">
+				<div class="heading-ja">不具合情報</div>
+				<div class="heading-en">trouble information</div>
+				<div class="article-box">現在、不具合情報はありません。</div>
+			</div>
+		<div id="end-tag">-end-</div>
+		</div>
 	</div>
-</div>
-
-<script src="https://www.awayatan.com/js/fixedBox.js"></script>
+<script src="https://www.awayatan.com/js/fixedbox.js"></script>
 <script src="https://www.awayatan.com/js/darkmode.js"></script>
+
 </body>
 </html>

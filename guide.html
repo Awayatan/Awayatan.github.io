@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Comfortaa:wght@300&family=Kaisei+HarunoUmi&family=Castoro+Titling&family=Kiwi+Maru:wght@300;400;500&family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/common.css">
   <script>
     (function(d) {
       var config = {
@@ -29,10 +29,10 @@
 </head>
 
 <body>
-	<div id="fixedBox">
-		<div id="titleBox">
-			<div id="subTitle">CAT AND<br>SPECTRE</div>
-			<div id="verticalTitle">猫と怪物</div>
+	<div id="header">
+		<div id="title-wrapper">
+			<div id="subtitle">CAT AND SPECTRE</div>
+			<div id="maintitle">猫と怪物</div>
 		</div>
 		<div id="indexList">
 			<a href="https://www.awayatan.com/index.html">Top</a><br>
@@ -44,44 +44,36 @@
 		<label id="toggleButton" for="darkmode">
 			<input id="darkmode" type="checkbox"/>
 		</label>
-		<!-- verなど必要に応じて
-		<div id='informationBox'></div>
-		-->
 	</div>
 
-
-	<!-- 変更はここから -->
-	<div id="articleArea">
-		<div id="articleTitleArea">
-			<div id="articleTitleSquare">
-				<div id="articleTitleEN">GUIDE</div>
-			</div>
-			<div id="articleTitleMainbox">
-				<div id="articleTitleJP">凡例</div>
-				<div id="outline">逆立ちをして観た場合、この判例は意味を持たないかもしれない――意味がすべて真逆になってしまうかもしれないので。</div>
-			</div>
+	<div id="content-wrapper">
+		<div id="bg-title">cat and<br>. spectre</div>
+		<div id="article-title-container">
+			<div id="article-title-container-bg"></div>
+			<div id="article-title">凡例</div>
+			<span id="post-date">post: 2023/05/28</span>
+			<span id="last-update-date">update: 2023/05/28</span>
+			<div id="outline">　そんなもの自由でいいんですけどね。ねえ？</div>
 		</div>
 
-		<div id="articleBodyArea">
+		<div id="article-wrapper">
 			<div class="main-content">
-				<div class="categoryIndex">見出しです</div>
-				<div class="categoryIndexEN">Index!</div>
-				<div class="categoryIndexSmall boxPink">これも付箋ではなく小見出しです。</div>
-				<div class="categoryIndexSmall boxGreen">……けれどもたまにそのような使い方をするかもしれません。</div>
-				<div class="categoryIndexSmall boxBlue">……そういうものです。</div>
-				<div class="articleBoxQuote"><div class="quoteBox">引用のつもりです。</div></div>
-				<div class="articleBox">本文のはずです。斜めから見たら違うものになるかもしれません。</div>
-			</div>
-			<div class="main-content">
-				<div class="categoryIndex">ver 1.2 追加要素</div>
-				<div class="categoryIndexEN">ver 1.2~</div>
-				<div class="articleBox">
-					<div class="articleh1">見出しが追加されました。</div>　また、<span class="lineMarker lineOrange">マーカー</span>が<span class="lineMarker lineLightblue">二色</span>も追加されました。
-		<div id="endTag">- END -</div>
+				<div class="heading-ja">凡例</div>
+				<div class="heading-en">explanatory note</div>
+				<div class="article-h1">見出しです。へー。</div>
+				<div class="article-box">　役に立たない文章です。一丁前に<span class="line-marker-lightblue">マーカー</span>とか<span class="line-marker-pink">違う色</span>とかもありますがどれも役にたちません。……と、人間は口を揃えていいます。</div>
+				<div class="quote-box">ひとを導くのは神だが<br>背中を押すのはただ悪魔のみである。</div>
+				<div class="border-box">なんの枠？</div>
+		<div id="end-tag">-end-</div>
+		</div>
 	</div>
-</div>
+	
 
-<script src="https://www.awayatan.com/js/fixedBox.js"></script>
+
+
+
+<script src="https://www.awayatan.com/js/fixedbox.js"></script>
 <script src="https://www.awayatan.com/js/darkmode.js"></script>
+
 </body>
 </html>

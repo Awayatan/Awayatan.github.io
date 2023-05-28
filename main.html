@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Comfortaa:wght@300&family=Kaisei+HarunoUmi&family=Castoro+Titling&family=Kiwi+Maru:wght@300;400;500&family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/common.css">
   <script>
     (function(d) {
       var config = {
@@ -29,10 +29,10 @@
 </head>
 
 <body>
-	<div id="fixedBox">
-		<div id="titleBox">
-			<div id="subTitle">CAT AND<br>SPECTRE</div>
-			<div id="verticalTitle">猫と怪物</div>
+	<div id="header">
+		<div id="title-wrapper">
+			<div id="subtitle">CAT AND SPECTRE</div>
+			<div id="maintitle">猫と怪物</div>
 		</div>
 		<div id="indexList">
 			<a href="https://www.awayatan.com/index.html">Top</a><br>
@@ -44,62 +44,77 @@
 		<label id="toggleButton" for="darkmode">
 			<input id="darkmode" type="checkbox"/>
 		</label>
-		<!-- verなど必要に応じて
-		<div id='informationBox'></div>
-		-->
 	</div>
 
-
-	<!-- 変更はここから -->
-	<div id="articleArea">
-		<div id="articleTitleArea">
-			<div id="articleTitleSquare">
-				<div id="articleTitleEN">ROADS</div>
-			</div>
-			<div id="articleTitleMainbox">
-				<div id="articleTitleJP">径</div>
-				<div id="outline">いつでも戻って来られるし、おそらくいちばん来ることになる。</div>
-			</div>
+	<div id="content-wrapper">
+		<div id="bg-title">cat and<br>. spectre</div>
+		<div id="article-title-container">
+			<div id="article-title-container-bg"></div>
+			<div id="article-title">径</div>
+			<span id="post-date">post: 2023/05/28</span>
+			<span id="last-update-date">update: 2023/05/28</span>
+			<div id="outline">　Few roads diverged in a...</div>
 		</div>
 
-		<div id="articleBodyArea">
+		<div id="article-wrapper">
 			<div class="main-content">
-				<div class="categoryIndex">創作・オリジナル</div>
-				<div class="categoryIndexEN">Original Creation</div>
-				<div class="categoryIndexSmall boxPink">楽曲背景など</div>
-				<div class="articleBox">No Data.</div>
-				<div class="categoryIndexSmall boxBlue">エセ論文</div>
-				<div class="articleBox">No Data.</div>
-				<div class="categoryIndexSmall boxBlue">詩・小説</div>
-				<div class="articleBox">No Data.</div>
-			</div><div class="main-content">
-				<div class="categoryIndex">解説（理系科目）</div>
-				<div class="categoryIndexEN">sciences / tech etc.</div>
-				<div class="categoryIndexSmall boxGreen">数学</div>
-				<div class="articleBox">No Data.</div>
-				<div class="categoryIndexSmall boxGreen">量子力学と宇宙論</div>
-				<div class="articleBox">No Data.</div>
-			</div><div class="main-content">
-				<div class="categoryIndex">解説（文系科目）</div>
-				<div class="categoryIndexEN">humanities / liberal arts / social sciences etc.</div>
-				<div class="categoryIndexSmall boxGreen">文学</div>
-				<div class="articleBox">No Data.</div>
-				<div class="categoryIndexSmall boxGreen">哲学</div>
-				<div class="articleBox"></div>
-				<div class="categoryIndexSmall boxGreen">社会・人文・経済学</div>
-				<div class="articleBox">No Data.</div>
-				<div class="categoryIndexSmall boxGreen">国際</div>
-				<div class="articleBox">No Data.</div>
-			</div><div class="main-content">
-				<div class="categoryIndex">その他</div>
-				<div class="categoryIndexEN">Others</div>
-				<div class="articleBox">No Data.</div>
+				<div class="heading-ja">創作</div>
+				<div class="heading-en">creation</div>
+				<div class="article-h1">エセ論文</div>
+				<div class="article-box">no data.</div>
+				<div class="article-h1">詩・小説</div>
+				<div class="article-box">
+					・<a href="https://www.awayatan.com/article/poem_notitle_00001.html">無題</a>
+				</div>
+				<div class="article-h1">楽曲背景など</div>
+				<div class="article-box">no data.</div>
 			</div>
-		<div id="endTag">- END -</div>
+			<div class="main-content">
+				<div class="heading-ja">数学・自然科学</div>
+				<div class="heading-en">sciences / tech etc</div>
+				<div class="article-h1">数学</div>
+				<div class="article-box">no data.</div>
+				<div class="article-h1">量子力学と宇宙論</div>
+				<div class="article-box">no data.</div>
+				<div class="article-h1">地球科学</div>
+				<div class="article-box">
+					・<a href="https://www.awayatan.com/article/EarthscienceBasic_1.html">地球科学基礎　第一部</a>
+				</div>
+			</div>
+			<div class="main-content">
+				<div class="heading-ja">文学・哲学・社会科学</div>
+				<div class="heading-en">humanities / liberal arts / social sciences etc.</div>
+				<div class="article-h1">文学</div>
+				<div class="article-box">no data.</div>
+				<div class="article-h1">哲学</div>
+				<div class="article-box">
+					・<a href="https://www.awayatan.com/article/phtalk_00001.html">哲学談話「数・物理・哲学の抽象性」</a>
+				</div>
+				<div class="article-h1">社会・人文・経済学</div>
+				<div class="article-box">no data.</div>
+				<div class="article-h1">国際</div>
+				<div class="article-box">
+					・<a href="https://www.awayatan.com/article/regionalism">属地主義</a>
+				</div>
+			</div>
+			<div class="main-content">
+				<div class="heading-ja">そのほか</div>
+				<div class="heading-en">others</div>
+				<div class="article-h1">単発記事</div>
+				<div class="article-box">no data.</div>
+				<div class="article-h1">未分類</div>
+				<div class="article-box">no data.</div>
+			</div>
+		<div id="end-tag">-end-</div>
+		</div>
 	</div>
-</div>
+	
 
-<script src="https://www.awayatan.com/js/fixedBox.js"></script>
+
+
+
+<script src="https://www.awayatan.com/js/fixedbox.js"></script>
 <script src="https://www.awayatan.com/js/darkmode.js"></script>
+
 </body>
 </html>

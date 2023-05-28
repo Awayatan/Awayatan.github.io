@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Comfortaa:wght@300&family=Kaisei+HarunoUmi&family=Castoro+Titling&family=Kiwi+Maru:wght@300;400;500&family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/common.css">
   <script>
     (function(d) {
       var config = {
@@ -29,10 +29,10 @@
 </head>
 
 <body>
-	<div id="fixedBox">
-		<div id="titleBox">
-			<div id="subTitle">CAT AND<br>SPECTRE</div>
-			<div id="verticalTitle">猫と怪物</div>
+	<div id="header">
+		<div id="title-wrapper">
+			<div id="subtitle">CAT AND SPECTRE</div>
+			<div id="maintitle">猫と怪物</div>
 		</div>
 		<div id="indexList">
 			<a href="https://www.awayatan.com/index.html">Top</a><br>
@@ -44,35 +44,45 @@
 		<label id="toggleButton" for="darkmode">
 			<input id="darkmode" type="checkbox"/>
 		</label>
-		<!-- verなど必要に応じて
-		<div id='informationBox'></div>
-		-->
 	</div>
 
-
-	<!-- 変更はここから -->
-	<div id="articleArea">
-		<div id="articleTitleArea">
-			<div id="articleTitleSquare">
-				<div id="articleTitleEN">404 NOT FOUND</div>
-			</div>
-			<div id="articleTitleMainbox">
-				<div id="articleTitleJP">ここには何もない。</div>
-				<div id="outline">誰かの足跡ならある。……そこはさっき通ったところだ。</div>
-			</div>
+	<div id="content-wrapper">
+		<div id="bg-title">cat and<br>. spectre</div>
+		<div id="article-title-container">
+			<div id="article-title-container-bg"></div>
+			<div id="article-title">404 not found</div>
+			<span id="post-date">post: 2023/05/28</span>
+			<span id="last-update-date">update: 2023/05/28</span>
+			<div id="outline">　ここには何もないが、誰かの足跡ならある。<br>　……どうやら輪廻に巻き込まれたようだ。</div>
 		</div>
 
-		<div id="articleBodyArea">
+		<div id="article-wrapper">
 			<div class="main-content">
-				<div class="categoryIndex">虚無</div>
-				<div class="categoryIndexEN">nothing.</div>
-				<div class="articleBox">　そうです。何もありません。森ならばそこから新芽が生えますが、このページは変わりません。いつまでも死んだままです。</div>
+				<div class="heading-ja">記事一覧へ</div>
+				<div class="heading-en">index page's link</div>
+				<div class="article-box">　右のリンクから行けるけどね。<br>　まあいいか。</div>
+				<div class="border-box"><a href="https://www.awayatan.com/main.html">ここから</a>。</div>
 			</div>
-		<div id="endTag">- END -</div>
-	</div>
-</div>
+			<div class="main-content">
+				<div class="heading-ja">おはなし</div>
+				<div class="heading-en">talk, talk, talk.</div>
+				<div class="sub-heading">ふしぎなはなしをする</div>
 
-<script src="https://www.awayatan.com/js/fixedBox.js"></script>
+				<div class="article-h1">「なにを大切にするか」</div>
+				<div class="article-box">　多くのものごとを知っているだけの存在になってしまうと——おそらく二種類の呼称しか持てない。そのひとつが「神」で、もうひとつが「百科事典」、もしさらにもうひとつ呼称を必要とするならば、「名前を口にするのも憚られる、あのひと」。……</div>
+				<div class="quote-box">ほら　いま煤煙が<br>嵐になってとびだしてくる<br>きみの中から<br><br>——大岡信「少年」</div>
+				<div class="article-box">　もし死んだあとにでも旅をしたいとおもうのならばあゆむ方法でもを覚えるがいい。そのときの孤独が寂しくてしかたないというのなら、墓場の居心地をよくするように努めればいい。百科事典先生は居ないが、君たちは互いの慰めにはなるだろう。<br><br>　わたくしはいまから遠い世界にいこうとおもう。たかが二万キロメートルでさえ、ひとは距離を感じるものだ。<br><br>　いま　あたたかな野良猫を携える<br>　ことばを融かせ　われらは旅人
+			</div>
+		<div id="end-tag">-end-</div>
+		</div>
+	</div>
+	
+
+
+
+
+<script src="https://www.awayatan.com/js/fixedbox.js"></script>
 <script src="https://www.awayatan.com/js/darkmode.js"></script>
+
 </body>
 </html>

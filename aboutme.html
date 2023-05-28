@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Comfortaa:wght@300&family=Kaisei+HarunoUmi&family=Castoro+Titling&family=Kiwi+Maru:wght@300;400;500&family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/common.css">
   <script>
     (function(d) {
       var config = {
@@ -29,10 +29,10 @@
 </head>
 
 <body>
-	<div id="fixedBox">
-		<div id="titleBox">
-			<div id="subTitle">CAT AND<br>SPECTRE</div>
-			<div id="verticalTitle">猫と怪物</div>
+	<div id="header">
+		<div id="title-wrapper">
+			<div id="subtitle">CAT AND SPECTRE</div>
+			<div id="maintitle">猫と怪物</div>
 		</div>
 		<div id="indexList">
 			<a href="https://www.awayatan.com/index.html">Top</a><br>
@@ -44,46 +44,55 @@
 		<label id="toggleButton" for="darkmode">
 			<input id="darkmode" type="checkbox"/>
 		</label>
-		<!-- verなど必要に応じて
-		<div id='informationBox'></div>
-		-->
 	</div>
 
-
-	<!-- 変更はここから -->
-	<div id="articleArea">
-		<div id="articleTitleArea">
-			<div id="articleTitleSquare">
-				<div id="articleTitleEN">About Awaya Tan</div>
-			</div>
-			<div id="articleTitleMainbox">
-				<div id="articleTitleJP">猫と怪物の入口で風に乗って聞こえてきた声</div>
-				<div id="outline">ようこそ<br>……また久久の客人のようです。何方が出向きましょう。いっそのこと我我全員で行きましょうか？</div>
-			</div>
+	<div id="content-wrapper">
+		<div id="bg-title">cat and<br>. spectre</div>
+		<div id="article-title-container">
+			<div id="article-title-container-bg"></div>
+			<div id="article-title">淡捌曇と猫と怪物</div>
+			<span id="post-date">post: 2023/05/28</span>
+			<span id="last-update-date">update: 2023/05/28</span>
+			<div id="outline">　誰ですか？<br>　＞失礼ですね。</div>
 		</div>
 
-		<div id="articleBodyArea">
+		<div id="article-wrapper">
 			<div class="main-content">
-				<div class="categoryIndex">ごあいさつ</div>
-				<div class="categoryIndexEN">message</div>
-				<div class="categoryIndexSmall boxBlue">幸福の死んだ世界の・束縛による狂気を携える命</div>
-				<div class="articleBoxQuote"><div class="quoteBox">Himself ── to Him ── a Fortune ──<br>Exterior ── to Time ──<br><br>‘This was a Poet ── It is That’ - Dickinson</div></div>
-				<div class="articleBox">　ディキンソンが少なくとも現下のこの世界において、申し分ない生き方をしていた人物だとはいえまい。一般にいえばディキンソンのそれはあまりに悲惨であった。もし死後の世界を知ることができる、と信じているのならばそこにはかろうじて救済を見出すことはできようが、それでも一般論では誰もが避けようとしたはずの道である。<br>　しかし、同時にそれは魅力を携えた生き様でもある。苦痛から逃げることばかりに齷齪する塀を建て、ここからはわたくしの領土だ、と声高高に宣言したい。<br>　わたくしは詩人ではないし、少なくとも文筆家を名乗ろうとはおもわない。そのように見える努力をするかもしれないが、その反面わたくしはそのような自称をあえて避けるだろう。創作物を大いに世へ送り出すこともしない。片田舎の荒廃した無人駅で――人間の善意だけで動いていた駅で――ゆきさきも問わず別れるばかりだ。わたくしの創作というものはすべてそれに尽きる。それ以上のことは何も望まない。</div>
-			</div><div class="main-content">
-				<div class="categoryIndex">道標</div>
-				<div class="categoryIndexEN">Few roads diverged in a wood, and I ――</div>
-				<div class="categoryIndexSmall boxPink">過去</div>
-				<div class="articleBox">　2002年からのことは知っています。それ以前のことは何も知りません。何も。<br>　過去の所属は語るに値しません。総て嫌いです。<br>　宇宙論や量子力学、言語学や哲学に至るまで幅広く興味があります。そういう意味では＜所属＞しているのかもしれません。</div>
-				<div class="categoryIndexSmall boxBlue">現在</div>
-				<div class="articleBox">　これといって面白いことはありません。言語を習得したり、執筆したり、プログラミングをしたり、コーヒーを淹れたり、寝起きが悪かったりしています。たまに趣味の範疇でひとに見せるまでもないコスプレをしますが、そこまで大した特徴は持ち合わせて居りません。</div>
-				<div class="categoryIndexSmall boxGreen">未来</div>
-				<div class="articleBox">　……どうなるんでしょうか？　見当すらつきません。そもそもいつまで生きられるんでしょう？<br>　あまり未来のことは考えないようにしています。現在ですらその実在が定かではないのにそれを拡張させるだけの時間はないのです。</div>
+				<div class="heading-ja">淡捌曇について</div>
+				<div class="heading-en">about Awayatan</div>
+				<div class="article-box">　そういうひとつのかたまりでした。（今のところ）二十一種類の春を知っています。
 			</div>
-		<div id="endTag">- END -</div>
+			<div class="main-content">
+				<div class="heading-ja">猫と怪物について</div>
+				<div class="heading-en">about CAT AND SPECTRE</div>
+				<div class="article-box">　前身である「ぬえといけにえ」の閉鎖に伴い、新たに開発し公開したサイトです。読みものとしての価値があるのかはわかりません。……わたくしの技量の問題ではなく、あなたの感受性の問題です。</div>
+			</div>
+			<div class="main-content">
+				<div class="heading-ja">メンバー</div>
+				<div class="heading-en">member</div>
+				<div class="article-h1">淡捌曇</div>
+				<div class="article-box">管理者。サイト設計、総括を行う。量子力学・宇宙論、哲学、経済学、抽象数学、言語学など興味はやたら幅広い。その傍ら作曲など創作も行う狂人。常識はない。</div>
+				<div class="article-h1">淡捌寧</div>
+				<div class="article-box">イラスト担当。当サイトのすべてのイラストを担当する。</div>
+				<div class="article-h1">Rn Krau</div>
+				<div class="article-box">査読および広報担当。広報といっても宣伝ではなく応対など。連絡用Googleフォーム管理。読みは「ルン・クラウ」。</div>
+				<div class="article-h1">みゃぐろ Myaguro</div>
+				<div class="article-box">査読および執筆担当。専門は数学、とくにトポロジー。</div>
+				<div class="article-h1">うーすー</div>
+				<div class="article-box">査読および執筆担当。専門は金融工学。</div>
+				<div class="article-h1">Hon</div>
+				<div class="article-box">査読および執筆担当。サブカルにめっぽう強い。好みを少し提示するだけでぴったりのVTuberを教えてくれる。</div>
+			</div>
+		<div id="end-tag">-end-</div>
+		</div>
 	</div>
-</div>
+	
 
-<script src="https://www.awayatan.com/js/fixedBox.js"></script>
+
+
+
+<script src="https://www.awayatan.com/js/fixedbox.js"></script>
 <script src="https://www.awayatan.com/js/darkmode.js"></script>
+
 </body>
 </html>
