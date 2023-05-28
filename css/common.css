@@ -11,7 +11,6 @@
 	--line-pink: #c685b890;
 	--quote-colour: #c6c7b5;
 }
-
 body{
 	margin-top: 0;
 	margin-left: 0;
@@ -226,6 +225,7 @@ a{
 #article-wrapper{
 	display: block;
 	position: absolute;
+	width: calc(100vw - 130px);
 	top: 0;
 	margin-left: 20px;
 	padding-top: 240px;
