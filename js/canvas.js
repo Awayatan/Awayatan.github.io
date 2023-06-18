@@ -1,10 +1,22 @@
 const canvasWrapper = document.getElementById("canvas");
 const canvas = document.getElementById("bg-canvas");
 const context = canvas.getContext("2d");
+let bgcolour = "#222222";
 
-if (window.location.search.includes("brownout")) {
-  if (canvas) {
-    canvas.style.visible = "collapse";
+if (window.location.search.includes("notsummernight")) {
+  canvas.style.visibility = "collapse";
+}
+
+function isHexColorCode(input) {
+  var hexColorCodePattern = /^[0-9a-fA-F]{6}$/;
+  return hexColorCodePattern.test(input);
+}
+if (window.location.search.includes("colourfuldays")) {
+  let colourtag = prompt("6-digit string consisting of 0-9 a/o a-f.");
+  if(isHexColorCode(colourtag)){
+    bgcolour = "#" + colourtag;
+  }else{
+    bgcolour = "#222222";
   }
 }
 
@@ -71,8 +83,16 @@ class Circle {
 }
 
 // 丸の数と速度を設定
-const circleCount = 20;
-const circleSpeed = 0.6;
+let circleCount = 20;
+let circleSpeed = 0.6;
+
+if (window.location.search.includes("moreandmore")) {
+circleCount = prompt("so, how many dots do you want?");
+}
+
+if (window.location.search.includes("fasterandfaster")) {
+circleSpeed = prompt("attain a speed faster than light!");
+}
 
 // 丸の配列を作成
 const circles = [];
@@ -140,7 +160,10 @@ function generateRandomLine() {
 // アニメーションの更新
 function update() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillStyle = "#222222";
+  context.fillStyle = bgcolour;
+  if (window.location.search.includes("balus!")) {
+    bgcolour = "#ffffff";
+  }
   context.fillRect(0, 0, canvas.width, canvas.height);
 
   // 丸の描画と移動
