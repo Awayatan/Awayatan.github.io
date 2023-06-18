@@ -2,6 +2,12 @@ const canvasWrapper = document.getElementById("canvas");
 const canvas = document.getElementById("bg-canvas");
 const context = canvas.getContext("2d");
 
+if (window.location.search.includes("brownout")) {
+  if (canvas) {
+    canvas.style.visible = "collapse";
+  }
+}
+
 // 画面サイズに合わせてcanvasのサイズを設定する関数
 function resizeCanvas() {
   canvas.width = canvasWrapper.offsetWidth;
