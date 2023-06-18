@@ -1,0 +1,131 @@
+body{
+	margin-top: 0;
+	margin-left: 0;
+	background-color: #222222;
+}
+a{
+	text-decoration: none;
+}
+::selection {
+	color: #c8faee;
+	background-color: #518c6a90;
+	text-decoration: rgb(67, 155, 217) wavy underline;
+}
+html, body, #canvas{
+	width: 100%;
+	height: 100%;
+}
+#canvas{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -10;
+}
+#bg-canvas{
+	display: block;
+}
+#header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 40px;
+	user-select: none;
+}
+#title-wrapper{
+	display: flex;
+	position: relative;
+	width: 318px;
+	padding: auto 0;
+}
+#maintitle{
+	display: flex;
+	transform: scaleX(0.9);
+	position: absolute;
+	height: 100%;
+	margin: 10px;
+	color: #ffffff;
+	font-family: source-han-serif-japanese, serif;
+	font-weight: 100;
+	font-size: 14px;
+	letter-spacing: 4px;
+	text-shadow:  0 0 8px #f0f4f3da, 0 0 15px #1ff9b09a, 0 0 25px #5c946cb1;
+	transition: border-bottom 1.5s ease, color 1.5s ease;
+}
+#main-content{
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	margin: 40px;
+}
+#article-title{
+	display: block;
+	position: relative;
+    height: fit-content;
+    width: 80%;
+	margin: 80px 0 0;
+	font-size: 50px;
+	font-family: source-han-serif-japanese, serif;
+	color: #ffffff;
+	font-weight: 100;
+}
+#article-wrapper{
+	display: block;
+	position: relative;
+	margin: 80px 0 0;
+	width: 90%;
+	height: 255px;
+}
+.article{
+	position: absolute;
+	width: 90%;
+	left: 0;
+	color: #cacaca;
+    padding-left: 38px;
+	transition: opacity 0.3s ease;
+	flex: 0 0 auto;
+	font-family: 'Kiwi Maru', serif;
+	font-size: 15.5px;
+	letter-spacing: 0.05em;
+}
+h1{
+    font-size:24.5px;
+    font-family: 'Kaisei HarunoUmi', serif;
+    font-weight: 100;
+    letter-spacing: 0.15em;
+    background-color: #73938e9e;
+    margin-left: -22px;
+    padding: 4px 0 4px 7px;
+    border-radius: 6px;
+}
+h2{
+    font-size:18.5px;
+    font-family: 'Kaisei HarunoUmi', serif;
+    font-weight: 100;
+    letter-spacing: 0.15em;
+    background-color: #8c73939e;
+    margin-left: -16.5px;
+    padding: 3px 0 3px 8px;
+    border-radius: 6px;
+}
+h3{
+    font-size:18.5px;
+    font-family: 'Kaisei HarunoUmi', serif;
+    font-weight: 100;
+    letter-spacing: 0.15em;
+    background-color: #4845879e;
+    margin-left: -16.5px;
+    padding: 3px 0 3px 8px;
+    border-radius: 6px;
+}
+span.MJXc-display{
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    border: 1px dashed #afafaf;
+    padding: 20px 15px;
+}
+span.MJXc-display::-webkit-scrollbar{
+  display:none;
+}
