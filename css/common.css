@@ -10,6 +10,10 @@ body{
 }
 a{
 	text-decoration: none;
+	color: #83ccd2;
+}
+a:visited{
+	color: #eebbcb;
 }
 ::selection {
 	color: #c8faee;
