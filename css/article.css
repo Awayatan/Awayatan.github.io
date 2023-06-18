@@ -119,6 +119,11 @@ h3{
     padding: 3px 0 3px 8px;
     border-radius: 6px;
 }
+h4{
+	font-family: source-han-serif-japanese, serif;
+	font-size: 15.5px;
+	font-weight: 400;
+}
 span.MJXc-display{
     overflow-x: auto;
     -ms-overflow-style: none;
