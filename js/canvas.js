@@ -99,7 +99,7 @@ const circles = [];
 for (let i = 0; i < circleCount; i++) {
   const x = Math.random() * (canvas.width - 50);
   const y = Math.random() * (canvas.height - 50);
-  const radius = 2;
+  const radius = 0.5;
   const circle = new Circle(x, y, radius, circleSpeed);
   circles.push(circle);
 }
