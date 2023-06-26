@@ -1,0 +1,28 @@
+table{
+  width: 100%;
+  background-color: #2e2;
+}
+th{
+  background-color: #ffe5e5;
+}
+td{
+  display: block;
+}
+th,td{
+  padding: 0.6rem 0.8rem;
+}
+tr{
+  position: relative;
+}
+tr::before {
+  position: absolute;
+  width: calc(100% - 3.6rem);
+  border: 3px solid #ff50ffcc;
+  content: "";
+}
+tbody::after {
+  position: absolute;
+  width: calc(100% - 3.6rem);
+  border: 1px solid #003dc2cc;
+  content: "";
+}
