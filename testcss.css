@@ -16,12 +16,14 @@ tr{
 }
 tr::before {
   position: absolute;
+  bottom: 0;
   width: calc(100% - 3.6rem);
   border: 3px solid #ff50ffcc;
   content: "";
 }
 tbody::after {
   position: absolute;
+  bottom: 0;
   width: calc(100% - 3.6rem);
   border: 1px solid #003dc2cc;
   content: "";
