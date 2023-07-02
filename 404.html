@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<meta name="google-site-verification" content="r0d2f2mmcw6cAYj0p_Tt1UqM4wbr7gzkAqZYxta6wSE" />
     <meta charset="utf-8">
     <meta name="author" content="淡捌曇">
     <meta name="description" content="眠れよ罪を忘れよ。">
@@ -9,13 +10,33 @@
     <meta name="format-detection" content="email=no,telephone=no,address=no">
     <meta name="google" content="nositelinkssearchbox">
     <meta name="google" content="notranslate">
-    <meta name=”viewport” content=”width:device-width, initial-scale=1″>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@400;500;700&family=Kiwi+Maru:wght@300;400;500&family=Raleway:ital,wght@0,100;0,500;1,100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=Crimson+Text:wght@600&family=Kaisei+HarunoUmi:wght@400;500;700&family=Kiwi+Maru:wght@300;400;500&family=Raleway:ital,wght@0,100;0,500;1,100&family=Zen+Maru+Gothic:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/article.css">
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+		  displayAlign: "left",
+		  displayIndent: "1.5em",
+		  tex2jax: {
+			inlineMath: [['$','$'], ['\\(','\\)']],
+			processEscapes: true
+		  },
+		  TeX: {
+			  equationNumbers: { autoNumber: "all" },
+			  extensions: ["mhchem.js"]
+		  },
+		  "CommonHTML": {
+			matchFontHeight: false,
+			mtextFontInherit: true
+		  }
+		});
+	</script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS_CHTML">
+	</script>
 	<script>
 		(function(d) {
 			var config = {
@@ -27,6 +48,7 @@
 		})(document);
 	</script>
 	<title>猫と怪物 | cat and spectre by Awaya Tan</title>
+	
 </head>
 
 <body>
@@ -34,32 +56,42 @@
 		<div id="header">
 			<div id="title-wrapper">
 				<div id="maintitle">猫と怪物 | cat and spectre</div>
+				<input id="button" type="checkbox">
 			</div>
 		</div>
 	</header>
 
+	<div id="saving-alert">
+		<input id="close" name="close" type="button"><label for="close">×</label>
+		<div id="close-message">　節電モードを変更する場合、<br>ページのリロードをしてください。<br><br><div id="close-message-omake">【技術的な話】　ページのロード時に、"saving"がオンかどうかを判別しています。<br>　技術的には都度変更することもできるのですが、この方法が簡単だったので……。</div></div>
+	</div>
 	<div id="canvas">
 		<canvas id="bg-canvas" width="" height=""></canvas>
-		<script type="text/javascript" src="https://www.awayatan.com/js/canvas.js"></script>
-	</div>
-	<div id="main-content">
-		<div id="profile-title" class="selection-none">404<br>not found.</div>
-		<div id="profile-wrapper" class="selection-none">
-			<div id="profileEN">
-				<span class="bold smalltext text-right">EN / <span class="gray">JP</span></span><br>
-				In the moon's soft glow, a cat so fair,<br>
-				this is literally nothing. no. zero. void.<br>
-                <a href="https://www.awayatan.com">>> main page</a>
-            </div>
-			<div id="profileJP">
-				<span class="bold smalltext text-right"><span class="gray">EN</span> / JP</span><br>
-                ここにはなにもありません。文字通り何も。<br>
-                <a href="https://www.awayatan.com">>> main page</a>
-			</div>
-		</div>
 	</div>
 
-	<script src="https://www.awayatan.com/js/index.js"></script>
-	<script src="https://www.awayatan.com/js/profile.js"></script>
+	<div id="menu">MODE<br>
+		<input class="saving-mode" name="saving-mode" id="saving" type="checkbox"><label for="saving">saving</label><br><br>
+		<input class="colour-mode" name="colour-mode" id="spring" type="radio"><label for="spring">spring</label><br>
+		<input class="colour-mode" name="colour-mode" id="summer" type="radio" checked><label for="summer">summer</label><br>
+		<input class="colour-mode" name="colour-mode" id="autumn" type="radio" ><label for="autumn">autumn</label><br>
+		<input class="colour-mode" name="colour-mode" id="winter" type="radio"><label for="winter">winter</label><br>
+		<input class="colour-mode" name="colour-mode" id="disable" type="radio"><label for="disable">disable</label><br>
+		<div id="cookie-on">cookieは有効です。<br>disableをクリックすることで無効にできます。</div>
+		<div id="cookie-off">cookieは無効です。<br>modeを変更することでcookieが有効になります。<br>有効後、disableをクリックすることで無効にできます。<br>cookieの利用については、<a href="https://www.awayatan.com/cookie.html">プライバシーポリシー</a>、つまりこのページをご確認ください。</div>
+	</div>
+	<div id="container-shadow"></div>
+	<div id="container">
+		<div id="article-container">
+			<div id="article-title">404 not found</div>
+			<div id="article-date">last update: 2023/07/02</div>
+			<h1>！</h1>
+			　そういえば今日、わたくしが生きることすら拒否していたような時分に知ったとある音楽家の作品を日暮らし聴いていました。わたくしは当時ひどく追い詰められていましたから、そうしたものたちがなければこれを執筆していることもなかったのでしょう。それらのほとんどはもう失われ、俗的なものに汚染され、同時にわたくしもそのようになりつつあります。わたくしはあの時代の、夙昔のことを至高だったと感じている。わたくしはあそこへ戻りたい。しかしそれはどこにもない。<br>
+			<br>
+			　404 not found.
+
+		</div>
+	</div>
+	<script src="https://www.awayatan.com/js/menu.js"></script>
+	<script type="text/javascript" src="https://www.awayatan.com/js/canvas.js" defer></script>
 </body>
 </html>

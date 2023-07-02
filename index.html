@@ -10,12 +10,12 @@
     <meta name="format-detection" content="email=no,telephone=no,address=no">
     <meta name="google" content="nositelinkssearchbox">
     <meta name="google" content="notranslate">
-    <meta name=”viewport” content=”width:device-width, initial-scale=1″>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@400;500;700&family=Kiwi+Maru:wght@300;400;500&family=Raleway:ital,wght@0,100;0,500;1,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=Crimson+Text:wght@600&family=Kaisei+HarunoUmi:wght@400;500;700&family=Kiwi+Maru:wght@300;400;500&family=Raleway:ital,wght@0,100;0,500;1,100&family=Zen+Maru+Gothic:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://www.awayatan.com/css/common.css">
 	<script>
 		(function(d) {
@@ -28,6 +28,7 @@
 		})(document);
 	</script>
 	<title>猫と怪物 | cat and spectre by Awaya Tan</title>
+	
 </head>
 
 <body>
@@ -35,80 +36,226 @@
 		<div id="header">
 			<div id="title-wrapper">
 				<div id="maintitle">猫と怪物 | cat and spectre</div>
+				<input id="button" type="checkbox">
 			</div>
 		</div>
 	</header>
 
+	<div id="saving-alert">
+		<input id="close" name="close" type="button"><label for="close">×</label>
+		<div id="close-message">　節電モードを変更する場合、<br>ページのリロードをしてください。<br><br><div id="close-message-omake">【技術的な話】　ページのロード時に、"saving"がオンかどうかを判別しています。<br>　技術的には都度変更することもできるのですが、この方法が簡単だったので……。</div></div>
+	</div>
 	<div id="canvas">
 		<canvas id="bg-canvas" width="" height=""></canvas>
-		<script type="text/javascript" src="https://www.awayatan.com/js/canvas.js"></script>
-	</div>
-	<div id="main-content">
-		<div id="profile-title" class="selection-none">Hej!<br>Välkommen till 'cat and spectre'.</div>
-		<div id="profile-wrapper" class="selection-none">
-			<div id="profileEN">
-				<span class="bold smalltext text-right">EN / <span class="gray">JP</span></span><br>
-				In the moon's soft glow, a cat so fair,<br>
-				With grace and charm beyond compare.<br>
-				Oh, sweet feline, what dost thou seek?<br>
-				To soothe our hearts, tender and meek?<br>
-				<br>
-				'cat and spectre' by <span class="bold">self-proclaimed cat</span> of Awaya Tan.</div>
-			<div id="profileJP">
-				<span class="bold smalltext text-right"><span class="gray">EN</span> / JP</span><br>
-				我我は何を<span class="bold">望む</span>のか？<br>
-				あるいは何を隠しているのか？<br>
-				失うそのときにも、それを知る緒はわからないままだ。<br>
-				そして恐らくは――惨憺たる沈黙を貫くだろう。<br>
-				<br>
-				「猫と怪物」は、自称・猫の淡捌曇により運営されています。</div>
-		</div>
-		<div id="index-wrapper">
-			<dl class="index">
-				<dt class="dt"><div class="update">2023.06</div><div class="theme">お知らせなど</div></dt>
-				<dd class="dd">
-					・<a href="https://www.awayatan.com/article/message.html">猫と怪物、あるいは……</a><br>
-					・<a href="https://www.awayatan.com/article/QandA.html">Q&Aなど</a>
-				</dd>
-			</dl>
-			<dl class="index">
-				<dt class="dt"><div class="update">2023.06</div><div class="theme">力学</div></dt>
-				<dd class="dd">
-					・<a href="https://www.awayatan.com/article/thermodynamics_01.html">【熱力学】熱力学のはじまり</a>
-				</dd>
-			</dl>
-			<dl class="index">
-				<dt class="dt"><div class="update">2023.06</div><div class="theme">数学:該当記事なし</div></dt>
-				<dd class="dd"></dd>
-			</dl>
-			<dl class="index">
-				<dt class="dt"><div class="update">2023.06</div><div class="theme">文学:該当記事なし</div></dt>
-				<dd class="dd"></dd>
-			</dl>
-		</div>
-		<div id="news">
-			news:
-			<div class="news-wrapper">
-				<div class="news-date">
-					2023.06.18
-				</div>
-				<div class="news-article">
-					ver 2.0をリリースしました。<br>
-                    6/20を目途に過去の記事の移植とarchiveを作成します。
-				</div>
-			</div>
-			<div class="news-wrapper">
-				<div class="news-date">
-					2023.05.28
-				</div>
-				<div class="news-article">
-					ver 1.2をリリースしました。
-				</div>
-			</div>
-		</div>
 	</div>
 
-	<script src="https://www.awayatan.com/js/index.js"></script>
+	<div id="menu">MODE<br>
+		<input class="saving-mode" name="saving-mode" id="saving" type="checkbox"><label for="saving">saving</label><br><br>
+		<input class="colour-mode" name="colour-mode" id="spring" type="radio"><label for="spring">spring</label><br>
+		<input class="colour-mode" name="colour-mode" id="summer" type="radio" checked><label for="summer">summer</label><br>
+		<input class="colour-mode" name="colour-mode" id="autumn" type="radio" ><label for="autumn">autumn</label><br>
+		<input class="colour-mode" name="colour-mode" id="winter" type="radio"><label for="winter">winter</label><br>
+		<input class="colour-mode" name="colour-mode" id="disable" type="radio"><label for="disable">disable</label><br>
+		<div id="cookie-on">cookieは有効です。<br>disableをクリックすることで無効にできます。</div>
+		<div id="cookie-off">cookieは無効です。<br>modeを変更することでcookieが有効になります。<br>有効後、disableをクリックすることで無効にできます。<br>cookieの利用については、<a href="https://www.awayatan.com/cookie.html">プライバシーポリシー</a>をご確認ください。</div>
+	</div>
+	<div id="container-shadow"></div>
+	<div id="container">
+		<div id="welcome-container">
+			<img src="https://www.awayatan.com/img/two.jpg" id="cat">
+			<div id="welcome" class="selection-none">Resound A Limpid Meow, Ere Silence Bestowed.</div>
+			<div id="message-wrapper" class="selection-none">
+				<div id="messageEN">
+					<span class="bold smalltext text-right">EN / <span class="gray">JP</span></span><br>
+					Let us journey to a world unseen, <br>
+					Treading boldly in the realm of dawn, <br>
+					Stirring not the slumbering lion.
+					<br>
+					'cat and spectre' by <br>
+					<span class="bold">self-proclaimed cat</span> of Awaya Tan.
+				</div>
+				<div id="messageJP">
+					<span class="bold smalltext text-right"><span class="gray">EN</span> / JP</span><br>
+					見たこともない世界へ行こう。<br>
+					眠る獅子を起こさないまま明方の許で闊歩するのだ。<br>
+					<br>
+					「猫と怪物」は、<br>
+					自称・猫の淡捌曇により運営されています。
+				</div>
+				<div class="next">scroll >>></div>
+			</div>
+		</div>
+
+		<div id="site-philosophy-container">
+			<div class="site-philosophy-wrapper">
+				<div class="site-philosophy-heading">第一節</div>
+				<div class="site-philosophy">
+					<blockquote class="crimson-text">Wovon man nicht sprechen kann, darüber muss man schweigen.<br><br> -  Ludwig Josef Johann Wittgenstein<br>"Logisch-Philosophische Abhandlung"</blockquote><br>
+				</div>
+			</div>
+			<div class="site-philosophy-wrapper">
+				<div class="site-philosophy-heading">第二節</div>
+				<div class="site-philosophy"><div class="philosophy-article"><br>　誰もがほとんど同じ色の空の下で生きていた。もう旅立った親愛なる白猫のことをおもいだす。あのときも同じような色をしていた。さよなら、「白猫」。</div></div>
+			</div>
+			<div class="site-philosophy-wrapper">
+				<div class="site-philosophy-heading">第三節</div>
+				<div class="site-philosophy"><blockquote class=" raleway">
+					Sieh dich nicht um. Schnür deinen Schuh. Jag die Hunde zurück. Wirf die Fische ins Meer. Lösch die Lupinen!<br>
+					<br>
+					Es kommen härtere Tage.<br><br> - Ingeborg Bachmann <br>"Die gestundete Zeit"</blockquote><br><br></div>
+			</div>
+			<div class="site-philosophy-wrapper">
+				<div class="site-philosophy-heading">第四節</div>
+				<div class="site-philosophy"><div class="philosophy-article zen-maru"><br>　あらゆるものは失われる。得られるものは沈黙で、残るものはまず烏有だ。<span class="crimson-text">nothing but silent.</span>それで堰を切ったように話しだす。みゃあ。</div></div>
+			</div>
+			<div class="site-philosophy-wrapper">
+				<div class="site-philosophy-heading">第五節</div>
+				<div class="site-philosophy"><blockquote>
+					Er sah nicht rückwärts; er wanderte rasch hinaus; und mehr und mehr versank hinter ihm das stille Gehöft, und vor ihm auf stieg die große weite Welt.<br><br> - Theodor Storm <br>"Immensee"</blockquote><br><br></div>
+			</div>
+		</div>
+
+		<div class="heading selection-none">Article</div>
+		<section class="index-container">
+			<div> <!-- なんでdivがあるのかわかっていない -->
+				<input id="index-null" name="accordion-1" type="radio">
+				<label class="non-border-top" for="index-null">
+					<div class="number">+"~.-_></div>
+					<div class="label">n   ul  l  === rubbbbish :true</div>
+				</label>
+				<article>
+					<div class="article-heading">2023.07</div>
+					<div class="article-index">
+					</div>
+				</article>
+			</div>
+			<div>
+				<input id="index-0" name="accordion-1" type="radio">
+				<label for="index-0">
+					<div class="number">00</div>
+					<div class="label">news&information</div>
+				</label>
+				<article>
+					<div class="article-heading">2023.06</div>
+					<div class="article-index">
+						・猫と怪物、あるいは……（現在再構築中）<br>
+						・<a href="https://www.awayatan.com/article/QandA.html">Q&Aなど</a>
+					</div>
+				</article>
+			</div>
+			<div>
+				<input id="index-1" name="accordion-1" type="radio">
+				<label for="index-1">
+					<div class="number">01</div>
+					<div class="label">creations</div>
+				</label>
+				<article>
+					<div class="article-heading">詩</div>
+					<div class="article-index">
+						記事はありません。<br>
+					</div>
+					<div class="article-heading">掌編</div>
+					<div class="article-index">
+						記事はありません。<br>
+					</div>
+					<div class="article-heading">そのほか</div>
+					<div class="article-index">
+						記事はありません。<br>
+					</div>
+				</article>
+			</div>
+			<div>
+				<input id="index-2" name="accordion-1" type="radio">
+				<label for="index-2">
+					<div class="number">02</div>
+					<div class="label">dynamics</div>
+				</label>
+				<article>
+					<div class="article-index">このジャンルは（今のところ）しばらく先まで更新の予定はありません。</div>
+					<div class="article-heading">力学</div>
+					<div class="article-index">
+						記事はありません。<br>
+					</div>
+					<div class="article-heading">熱力学</div>
+					<div class="article-index">
+						記事はありません。<br>
+					</div>
+					<div class="article-heading">流体力学</div>
+					<div class="article-index">
+						記事はありません。<br>
+					</div>
+					<div class="article-heading">電磁気学</div>
+					<div class="article-index">
+						記事はありません。<br>
+					</div>
+					<div class="article-heading">量子力学</div>
+					<div class="article-index">
+						記事はありません。<br>
+					</div>
+				</article>
+			</div>
+			<div>
+				<input id="index-3" name="accordion-1" type="radio">
+				<label for="index-3">
+					<div class="number">03</div>
+					<div class="label">literature</div>
+				</label>
+				<article>
+					<div class="article-index">
+						記事はありません。近近移植します。<br>
+					</div>
+				</article>
+			</div>
+			<div>
+				<input id="index-4" name="accordion-1" type="radio">
+				<label for="index-4">
+					<div class="number">04</div>
+					<div class="label">philosophy</div>
+				</label>
+				<article>
+					<div class="article-index">
+						記事はありません。近近移植します。<br>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<div class="heading selection-none">Recommend</div>
+			<div id="recommend-wrapper">
+				<div class="recommend-article">
+					<div class="recommend-article-title">Project</div>
+					<div class="recommend-article-exp">　「猫と怪物」の開発や計画に関する情報。
+					<a href="https://www.awayatan.com/project.html">visit >> </a><br>
+						<div class="cormorant-garamond">A tiny diary filled with plans for the kind of world the owner dreamed to live in.</div>
+					</div>
+				</div>
+				<div class="recommend-article">
+					<div class="recommend-article-title">Q & A</div>
+					<div class="recommend-article-exp">　たいだいの質問はここにない。なにかは得られるかもしれない。
+					<a href="https://www.awayatan.com/QandA.html">visit >> </a><br>
+						<div class="cormorant-garamond">"What's that star called?"<br>"Can't really tell through the window. Well, let's see..."</div>
+					</div>
+				</div>
+				<div class="recommend-article">
+					<div class="recommend-article-title">淡捌曇とは</div>
+					<div class="recommend-article-exp">　すぐに意味をなさなくなるうえ、言葉には呪縛のようにまとわりつくものたち。淡捌曇、自称・猫。
+					<a href="https://www.awayatan.com/awayatan.html">visit >> </a><br>
+						<div class="cormorant-garamond">farewell, 'Mx. Happness'.</div>
+					</div>
+				</div>
+				<div class="recommend-article">
+					<div class="recommend-article-title">つかいかた</div>
+					<div class="recommend-article-exp">　そんなものすべて自由です。好きにすればいい。
+					<a href="https://www.awayatan.com/howtouse.html">visit >> </a><br>
+						<div class="cormorant-garamond">farewell, 'Mx. Happness'.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
 	<script src="https://www.awayatan.com/js/profile.js"></script>
+	<script src="https://www.awayatan.com/js/menu.js"></script>
+	<script type="text/javascript" src="https://www.awayatan.com/js/canvas.js" defer></script>
 </body>
 </html>
