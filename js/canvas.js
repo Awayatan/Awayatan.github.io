@@ -1,24 +1,11 @@
-const canvasWrapper = document.getElementById("canvas");
+window.addEventListener("load", function() {
+  let saving = document.getElementById("saving");
+  const canvasWrapper = document.getElementById("canvas");
+  if(saving.checked === false){
+
 const canvas = document.getElementById("bg-canvas");
 const context = canvas.getContext("2d");
-let bgcolour = "#222222";
-
-if (window.location.search.includes("notsummernight")) {
-  canvas.style.visibility = "collapse";
-}
-
-function isHexColorCode(input) {
-  var hexColorCodePattern = /^[0-9a-fA-F]{6}$/;
-  return hexColorCodePattern.test(input);
-}
-if (window.location.search.includes("colourfuldays")) {
-  let colourtag = prompt("6-digit string consisting of 0-9 a/o a-f.");
-  if(isHexColorCode(colourtag)){
-    bgcolour = "#" + colourtag;
-  }else{
-    bgcolour = "#222222";
-  }
-}
+let bgimage = "#ffffff";
 
 // 画面サイズに合わせてcanvasのサイズを設定する関数
 function resizeCanvas() {
@@ -50,7 +37,7 @@ class Circle {
     context.beginPath();
     context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     context.closePath();
-    context.fillStyle = `rgba(182, 258, 242, ${this.alpha})`;
+    context.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
     context.fill();
 
     // 点滅のロジック
@@ -84,22 +71,14 @@ class Circle {
 
 // 丸の数と速度を設定
 let circleCount = 20;
-let circleSpeed = 0.6;
-
-if (window.location.search.includes("moreandmore")) {
-circleCount = prompt("so, how many dots do you want?");
-}
-
-if (window.location.search.includes("fasterandfaster")) {
-circleSpeed = prompt("attain a speed faster than light!");
-}
+let circleSpeed = 0.4;
 
 // 丸の配列を作成
 const circles = [];
 for (let i = 0; i < circleCount; i++) {
   const x = Math.random() * (canvas.width - 50);
   const y = Math.random() * (canvas.height - 50);
-  const radius = 0.5;
+  const radius = 3;
   const circle = new Circle(x, y, radius, circleSpeed);
   circles.push(circle);
 }
@@ -125,7 +104,7 @@ class Line {
     // 点滅のロジック
     if (this.isFadingOut) {
       this.alpha -= this.fadeSpeed; // 透明度を減少させる
-      if (this.alpha <= 0) {
+      if (this.alpha <= 0.4) {
         this.isFadingOut = false;
       }
     } else {
@@ -159,12 +138,8 @@ function generateRandomLine() {
 
 // アニメーションの更新
 function update() {
+  // 背景を透明にする
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillStyle = bgcolour;
-  if (window.location.search.includes("balus!")) {
-    bgcolour = "#ffffff";
-  }
-  context.fillRect(0, 0, canvas.width, canvas.height);
 
   // 丸の描画と移動
   for (const circle of circles) {
@@ -198,3 +173,7 @@ function updateLines() {
 // アニメーションの開始
 updateLines();
 update();
+
+}else{
+  canvas.style.visibility = "collapse";
+};})

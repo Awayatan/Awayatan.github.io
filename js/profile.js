@@ -1,13 +1,13 @@
-var wrapper = document.getElementById("profile-wrapper");
-var profileEN = document.getElementById("profileEN");
-var profileJP = document.getElementById("profileJP");
+var wrapper = document.getElementById("message-wrapper");
+var messageEN = document.getElementById("messageEN");
+var messageJP = document.getElementById("messageJP");
 
 wrapper.addEventListener("click", function() {
-    if (profileEN.style.opacity === "0") {
-      profileEN.style.opacity = "1";
-      profileJP.style.opacity = "0";
+    if (messageEN.style.opacity === "0") {
+      messageEN.style.opacity = "1";
+      messageJP.style.opacity = "0";
     } else {
-      profileEN.style.opacity = "0";
-      profileJP.style.opacity = "1";
+      messageEN.style.opacity = "0";
+      messageJP.style.opacity = "1";
     }
   });
