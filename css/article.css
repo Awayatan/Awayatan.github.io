@@ -217,10 +217,12 @@ h2{
 	font-size: 23.5;
 	border-bottom: 2.5px dashed var(--select-colour);	
 }
-#article-container img, #article-container svg{
+#article-container .imgsvg{
 	max-width: 40%;
+	margin: 20px auto;
+}
+#article-container img, #article-container svg{
 	border-radius: 20px;
-	margin: 0 auto;
 }
 
 span.MJXc-display{
