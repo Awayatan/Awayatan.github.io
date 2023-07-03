@@ -60,8 +60,8 @@ html, body, #canvas, #myCanvas{
 	height: 100%;
 	margin: 10px;
 	color: var(--font-colour);
-	font-family: source-han-serif-japanese, serif;
-	font-weight: 100;
+	font-family: 'Shippori Mincho', serif;
+	font-weight: 400;
 	font-size: 15.5px;
 	letter-spacing: 4px;
 	text-shadow:  0 0 8px #f0f4f3da, 0 0 15px #1ff9b09a, 0 0 25px #5c946cb1;
@@ -280,7 +280,8 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
 	padding-bottom: 30px;
 }
 .philosophy-article{
-	font-family: source-han-serif-japanese, serif;
+	font-family: 'Shippori Mincho', serif;
+	font-weight: 500;
 	margin-left: 18px;
 	font-size: 15px;
 	letter-spacing: 0.05em;
