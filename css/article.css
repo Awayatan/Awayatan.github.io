@@ -3,6 +3,7 @@
 	--bg-img: linear-gradient(to right, #377174, #171258);
 	--menu-bg-colour: #5bacbd9e;
 	--font-colour: #beb5b5;
+	--font-op-colour: #1e1e1e55;
 	--a-colour: #05325e;
 	--a-bg-colour: #c2e4f5;
 	--a-visited-bg-colour: #cda3b1;
@@ -135,7 +136,7 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
 	display: block;
 	position: relative;
 	width: 80%;
-	background-color: #00000055;
+	background-color: var(--font-op-colour);
 	border-radius: 30px;
 	padding: 15px 20px;
 	margin: 0 auto;

@@ -3,6 +3,7 @@
 	--bg-img: linear-gradient(to right, #377174, #171258);
 	--menu-bg-colour: #5bacbd9e;
 	--font-colour: #beb5b5;
+	--font-op-colour: #1e1e1e55;
 	--a-colour: #05325e;
 	--a-bg-colour: #c2e4f5;
 	--a-visited-bg-colour: #cda3b1;
@@ -223,7 +224,7 @@ input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
 	min-height: calc(100vh - 120px);
 	width: 95%;
 	border-radius: 20px;
-	background-color: #00000055;
+	background-color: var(--font-op-colour);
 }
 .site-philosophy-wrapper{
 	display: flex;
@@ -402,7 +403,7 @@ blockquote{
 	font-size: 30px;
 	color: var(--font-colour);
 	border-radius: 20px;
-	background-color: #00000055;
+	background-color: var(--font-op-colour);
 }
 .recommend-article-title{
 	font-family: 'Crimson Text', 'Kaisei HarunoUmi', serif;
@@ -427,19 +428,6 @@ blockquote{
 	margin: 15px 0 0 auto;
 	padding-top: 1em;
 	width: 80%;
-	text-align: right;
-}
-
-.bold{
-	font-weight: 800;	
-}
-.gray{
-	color: #8a8a8a;
-}
-.smalltext{
-	font-size: 80%;
-}
-.text-right{
 	text-align: right;
 }
 .selection-none{
