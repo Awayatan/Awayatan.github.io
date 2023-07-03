@@ -185,6 +185,7 @@ function springColour(){
   root.style.setProperty('--bg-img', 'linear-gradient(to right, #df96d8, #c8c5ee)');
   root.style.setProperty('--menu-bg-colour', '#44c1469e');
   root.style.setProperty('--font-colour', '#1b1a1a');
+  root.style.setProperty('--font-op-colour', '#e2e2e255');
   root.style.setProperty('--a-colour', '#26498b');
   root.style.setProperty('--a-bg-colour', '#bae7e2');
   root.style.setProperty('--a-visited-bg-colour', '#cda3b1');
@@ -198,6 +199,7 @@ function summerColour(){
   root.style.setProperty('--bg-img', 'linear-gradient(to right, #377174, #171258)');
   root.style.setProperty('--menu-bg-colour', '#5bacbd9e');
   root.style.setProperty('--font-colour', '#beb5b5');
+  root.style.setProperty('--font-op-colour', '#1e1e1e55');
   root.style.setProperty('--a-colour', '#66a9eb');
   root.style.setProperty('--a-bg-colour', '#bae7e2');
   root.style.setProperty('--a-visited-bg-colour', '#cda3b1');
@@ -211,6 +213,7 @@ function autumnColour(){
 root.style.setProperty('--bg-img', 'linear-gradient(to right, #a11616, #ff9544)');
 root.style.setProperty('--menu-bg-colour', '#51236e9e');
 root.style.setProperty('--font-colour', '#ffebeb');
+root.style.setProperty('--font-op-colour', '#1e1e1e55');
 root.style.setProperty('--a-colour', '#83ccd2');
 root.style.setProperty('--a-bg-colour', '#102926');
 root.style.setProperty('--a-visited-bg-colour', '#291018');
@@ -224,6 +227,7 @@ function winterColour(){
   root.style.setProperty('--bg-img', 'linear-gradient(to right, #166ea1, #fffffe)');
   root.style.setProperty('--menu-bg-colour', '#97ce949e');
   root.style.setProperty('--font-colour', '#000000');
+  root.style.setProperty('--font-op-colour', '#e2e2e255');
   root.style.setProperty('--a-colour', '#125257');
   root.style.setProperty('--a-bg-colour', '#5dc8bb');
   root.style.setProperty('--a-visited-bg-colour', '#93123b');
