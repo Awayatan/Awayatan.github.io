@@ -107,7 +107,7 @@ ul {
     font-family: 'Comfortaa', 'Kiwi Maru', sans-serif;
     width: 90px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible;
     font-size: 11px;
     color: #ffffff;
     text-align: center;
