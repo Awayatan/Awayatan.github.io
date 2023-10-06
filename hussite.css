@@ -1,0 +1,122 @@
+a {
+    text-decoration: none;
+    color: #fdfdfd;
+}
+body {
+    background-color: #62434b;
+}
+#header-background {
+    background-color: #fdfdfd;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    height: 180px;
+    position: fixed;
+    width: 100%;
+}
+#page-title {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: center;
+    margin: 0;
+    padding: 30px 10% 50px;
+    position: fixed;
+    width: 100%;
+}
+#title-area {
+    color: #d0c2ad;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 42px;
+    height: 48px;
+    margin: 0 0 10px;
+    text-align: center;
+}
+#title-message {
+    border-radius: 3px;
+    color: #d0c2ad;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    text-align: center;
+    width: 250px;
+}
+@media (min-width: 1020px) {
+    body {
+        flex-direction: row;
+    }
+    #header-background {
+        clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);
+        height: 100%;
+        width: 35svw;
+    }
+    #page-title {
+        height: 100%;
+        padding: 100px 3% 0 0;
+        justify-content: flex-start;
+        width: 35svw;
+    }
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    padding: 160px 0 0;
+    width: 100svw;
+}
+.group-name {
+    border-bottom: 3.5px dotted #fdfdfd;
+    color: #fdfdfd;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    margin: 0 auto 20px;
+    text-align: center;
+    width: 65%;
+}
+ul {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    height: 100%;
+    margin: 0 auto;
+    width: 60%;
+}
+.icons {
+    list-style: none;
+    width: 110px;
+    height: 180px;
+    padding: 10px 10px 0;
+    font-size: 20px;
+    margin: 2px;
+}
+.icon-img {
+    aspect-ratio: 1/1;
+    height: 70px;
+    width: 80px;
+    margin: auto;
+}
+.icon-webp {
+    border-radius: 11px;
+    border: 1px solid #d08787;
+    height: 60px;
+    width: 60px;
+    aspect-ratio: 1/1;
+    margin: 10px;
+}
+.icon-label {
+    font-family: 'Comfortaa', 'Kiwi Maru', sans-serif;
+    width: 90px;
+    margin: 0 auto;
+    overflow: hidden;
+    font-size: 11px;
+    color: #ffffff;
+    text-align: center;
+}
+@media (min-width: 1020px) {
+    #container {
+        width: 70svw;
+        height: fit-content;
+        margin: 0 0 0 40svw;
+    }
+
+}
