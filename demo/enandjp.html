@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        textarea {
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #444444;
+            border-radius: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            height: 100px;
+        }
+
+        textarea:focus {
+            border-color: #1e88e5;
+        }
+
+        button {
+            background-color: #1e88e5;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1565c0;
+            transform: scale(1.05);
+        }
+
+        #output {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #output div {
+            margin-top: 10px;
+        }
+
+        #output button {
+            background-color: #26a69a;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        #output button:hover {
+            background-color: #00796b;
+            transform: scale(1.05);
+        }
+
+        #output button.active {
+            background-color: #ff5722;
+            transform: scale(1.1);
+        }
+
+        #autoPlayButton, #stopButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            margin-left: 10px;
+        }
+
+        #nowPlaying {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background-color: #121212;
+            padding: 10px;
+            border-bottom: 1px solid #444444;
+        }
+    </style>
+</head>
+<body>
+    <div id="nowPlaying">再生中: なし</div>
+    <p>デモサイトです。各行「english, 日本語」となるように入れればうまいこと行くかもしれないというだけ。</p>
+    <textarea id="inputText" rows="10" cols="50"></textarea><br>
+    <button onclick="processText()">Submit</button>
+    <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
+    <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
+    <div id="output"></div>
+
+    <script>
+        let autoPlayIndex = 0;
+        let autoPlayActive = false;
+
+        function processText() {
+            const inputText = document.getElementById('inputText').value;
+            const lines = inputText.split('\n');
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+
+            lines.forEach((line, index) => {
+                const [sth1, sth2] = line.split(',');
+                const id = index + 1;
+                const element = document.createElement('div');
+                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
+                outputDiv.appendChild(element);
+            });
+        }
+
+        function readText(sth1, sth2, button) {
+            const synth = window.speechSynthesis;
+
+            const utterThis1 = new SpeechSynthesisUtterance(sth1);
+            utterThis1.lang = 'en-GB';
+            synth.speak(utterThis1);
+
+            document.getElementById('nowPlaying').innerText = `再生中: ${sth1}`;
+
+            utterThis1.onend = function() {
+                setTimeout(() => {
+                    const utterThis2 = new SpeechSynthesisUtterance(sth2);
+                    utterThis2.lang = 'ja-JP';
+                    synth.speak(utterThis2);
+
+                    document.getElementById('nowPlaying').innerText = `再生中: ${sth2}`;
+
+                    utterThis2.onend = function() {
+                        if (autoPlayActive) {
+                            autoPlayIndex++;
+                            setTimeout(autoPlayNext, 400);
+                        }
+                    };
+                }, 200);
+            };
+
+            const buttons = document.querySelectorAll('#output button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        }
+
+        function autoPlay() {
+            autoPlayActive = true;
+            autoPlayIndex = 0;
+            autoPlayNext();
+        }
+
+        function autoPlayNext() {
+            const buttons = document.querySelectorAll('#output button');
+            if (autoPlayIndex < buttons.length) {
+                buttons[autoPlayIndex].click();
+            } else {
+                autoPlayActive = false;
+            }
+        }
+
+        function stopAutoPlay() {
+            autoPlayActive = false;
+        }
+    </script>
+</body>
+</html>
