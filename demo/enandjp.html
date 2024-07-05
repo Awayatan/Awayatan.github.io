@@ -76,15 +76,12 @@
             transform: scale(1.1);
         }
 
-        #autoPlayButton, #stopButton {
+        #buttonArea {
             position: fixed;
             bottom: 10px;
             right: 10px;
-            margin-left: 10px;
-        }
-
-        #autoPlayButton {
-            bottom: 30px;
+            display! flex;
+            flex-direction: column;
         }
 
         #nowPlaying {
@@ -102,8 +99,10 @@
     <p>デモサイトです。各行「english, 日本語」となるように入れればうまいこと行くかもしれないというだけ。</p>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
     <button onclick="processText()">Submit</button>
-    <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
-    <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
+    <div class="buttonArea">
+        <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
+        <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
+    </div>
     <div id="output"></div>
 
     <script>
