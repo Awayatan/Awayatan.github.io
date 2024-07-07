@@ -108,6 +108,28 @@
         select:focus {
             border-color: #1e88e5;
         }
+
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .test-buttons button {
+            background-color: #1e88e5;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .test-buttons button:hover {
+            background-color: #1565c0;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -135,6 +157,11 @@
         let autoPlayActive = false;
         let testModeActive = false;
         let scores = {};
+
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = '';
+        });
 
         function processText() {
             const inputText = document.getElementById('inputText').value;
@@ -199,7 +226,7 @@
 
             const buttons = document.querySelectorAll('#output button');
             buttons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+            if (button) button.classList.add('active');
         }
 
         function reverseText() {
@@ -234,10 +261,13 @@
         function enterTestMode() {
             testModeActive = true;
             document.body.innerHTML = `
-                <button onclick="practiceMode()">Practice</button>
-                <button onclick="startTest()">Start</button>
-                <button onclick="stopTest()">Stop</button>
-                <button onclick="outputScores()">Output</button>
+                <div id="nowPlaying">再生中: なし</div>
+                <div class="test-buttons">
+                    <button onclick="practiceMode()">Practice</button>
+                    <button onclick="startTest()">Start</button>
+                    <button onclick="stopTest()">Stop</button>
+                    <button onclick="outputScores()">Output</button>
+                </div>
                 <div id="testOutput"></div>
             `;
         }
@@ -253,15 +283,17 @@
                 alert('No more items to test.');
                 return;
             }
-            const randomKey = keys[Math.floor(Math.random() * keys.length)];
-            const [sth1, sth2] = randomKey.split(',');
-            readText(sth1, sth2, scores[randomKey], null);
-            document.body.innerHTML += `
-                <button onclick="updateScore('${randomKey}', 3)">Perfect</button>
-                <button onclick="updateScore('${randomKey}', 1)">OK</button>
-                <button onclick="updateScore('${randomKey}', -1)">Bad</button>
-            `;
-        }
+                        const randomKey = keys[Math.floor(Math.random() * keys.length)];
+                        const [sth1, sth2] = randomKey.split(',');
+                        readText(sth1, sth2, scores[randomKey], null);
+                        document.getElementById('testOutput').innerHTML = `
+                        <div class="test-buttons">
+                        <button onclick="updateScore('${randomKey}', 3)">Perfect</button>
+                        <button onclick="updateScore('${randomKey}', 1)">OK</button>
+                        <button onclick="updateScore('${randomKey}', -1)">Bad</button>
+                    </div>
+            `            ;
+            }
 
         function stopTest() {
             testModeActive = false;
@@ -270,13 +302,10 @@
 
         function updateScore(key, value) {
             scores[key] = Math.min(8, Math.max(-5, scores[key] + value));
-            document.body.innerHTML = `
-                <button onclick="practiceMode()">Practice</button>
-                <button onclick="startTest()">Start</button>
-                <button onclick="stopTest()">Stop</button>
-                <button onclick="outputScores()">Output</button>
-                <div id="testOutput"></div>
-            `;
+            document.getElementById('testOutput').innerHTML = '';
+            if (testModeActive) {
+                startTest();
+            }
         }
 
         function outputScores() {
