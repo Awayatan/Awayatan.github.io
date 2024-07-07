@@ -237,13 +237,13 @@
                 const [sth1, sth2] = line.split(separator);
                 const id = index + 1;
                 const element = document.createElement('div');
-                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
+                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', id, this)">${sth1}</button>`;
                 outputDiv.appendChild(element);
             });
         }
 
         // テキストの処理
-        function readText(sth1, sth2, button) {
+        function readText(sth1, sth2, id, button) {
             const synth = window.speechSynthesis;
             const speed = document.getElementById('speed').value;
             const lang1 = document.getElementById('lang1').value;
@@ -287,6 +287,7 @@
                         }
                     };
                 }, delay);
+                autoPlayIndex = id;
             };
 
             const buttons = document.querySelectorAll('#output button');
