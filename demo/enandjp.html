@@ -94,12 +94,33 @@
             padding: 10px;
             border-bottom: 1px solid #444444;
         }
+
+        select {
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #444444;
+            border-radius: 10px;
+            padding: 10px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #1e88e5;
+        }
     </style>
 </head>
 <body>
     <div id="nowPlaying">再生中: なし</div>
     <p>デモサイトです。各行「english, 日本語」となるように入れればうまいこと行くかもしれないというだけ。</p>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
+    <label for="speed">Speed:</label>
+    <select id="speed">
+        <option value="normal">Normal</option>
+        <option value="fast">Fast</option>
+        <option value="veryfast">Very Fast</option>
+        <option value="low">Low</option>
+    </select>
     <button onclick="processText()">Submit</button>
     <div class="buttonArea">
         <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
@@ -128,9 +149,24 @@
 
         function readText(sth1, sth2, button) {
             const synth = window.speechSynthesis;
+            const speed = document.getElementById('speed').value;
+            let rate = 1;
+            let delay = 200;
+
+            if (speed === 'fast') {
+                rate = 1.2;
+                delay = 100;
+            } else if (speed === 'veryfast') {
+                rate = 1.5;
+                delay = 50;
+            } else if (speed === 'low') {
+                rate = 0.8;
+                delay = 300;
+            }
 
             const utterThis1 = new SpeechSynthesisUtterance(sth1);
             utterThis1.lang = 'en-GB';
+            utterThis1.rate = rate;
             synth.speak(utterThis1);
 
             document.getElementById('nowPlaying').innerText = `再生中: ${sth1}`;
@@ -139,6 +175,7 @@
                 setTimeout(() => {
                     const utterThis2 = new SpeechSynthesisUtterance(sth2);
                     utterThis2.lang = 'ja-JP';
+                    utterThis2.rate = rate;
                     synth.speak(utterThis2);
 
                     document.getElementById('nowPlaying').innerText = `再生中: ${sth2}`;
@@ -146,10 +183,10 @@
                     utterThis2.onend = function() {
                         if (autoPlayActive) {
                             autoPlayIndex++;
-                            setTimeout(autoPlayNext, 400);
+                            setTimeout(autoPlayNext, delay);
                         }
                     };
-                }, 200);
+                }, delay);
             };
 
             const buttons = document.querySelectorAll('#output button');
