@@ -287,7 +287,7 @@
                         }
                     };
                 }, delay);
-                autoPlayIndex = id + 1;
+                autoPlayIndex = id;
             };
 
             const buttons = document.querySelectorAll('#output button');
@@ -307,6 +307,7 @@
             if (autoPlayIndex < buttons.length) {
                 buttons[autoPlayIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
                 buttons[autoPlayIndex].click();
+                autoPlayIndex ++;
             } else {
                 autoPlayActive = false;
                 toggleButtons(false);
