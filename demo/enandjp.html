@@ -417,6 +417,11 @@ function reverseTextAndLanguages() {
         return `${part2},${part1}`;
     });
     document.getElementById('inputText').value = reversedLines.join('\n');
+
+localStorage.setItem('inputText', document.getElementById('inputText').value);
+
+    // ボタンのラベルを更新
+    processText();
 }
 
     </script>
