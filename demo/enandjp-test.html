@@ -94,6 +94,20 @@
             padding: 10px;
             border-bottom: 1px solid #444444;
         }
+
+        select {
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #444444;
+            border-radius: 10px;
+            padding: 10px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #1e88e5;
+        }
     </style>
 </head>
 <body>
@@ -104,9 +118,12 @@
     <select id="speed">
         <option value="normal">Normal</option>
         <option value="fast">Fast</option>
-        <option value="low">Low</option>
+        <option value="veryfast">Very Fast</option>
+        <option value="slow">Slow</option>
     </select>
     <button onclick="processText()">Submit</button>
+    <button onclick="reverseText()">Reverse</button>
+    <button onclick="enterTestMode()">Test</button>
     <div class="buttonArea">
         <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
         <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
@@ -116,6 +133,8 @@
     <script>
         let autoPlayIndex = 0;
         let autoPlayActive = false;
+        let testModeActive = false;
+        let scores = {};
 
         function processText() {
             const inputText = document.getElementById('inputText').value;
@@ -124,15 +143,19 @@
             outputDiv.innerHTML = '';
 
             lines.forEach((line, index) => {
-                const [sth1, sth2] = line.split(',');
+                const parts = line.split(',');
+                const sth1 = parts[0];
+                const sth2 = parts[1];
+                const num = parts[2] ? parseInt(parts[2]) : 0;
                 const id = index + 1;
                 const element = document.createElement('div');
-                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
+                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', ${num}, this)">${sth1}</button>`;
                 outputDiv.appendChild(element);
+                scores[`${sth1},${sth2}`] = num;
             });
         }
 
-        function readText(sth1, sth2, button) {
+        function readText(sth1, sth2, num, button) {
             const synth = window.speechSynthesis;
             const speed = document.getElementById('speed').value;
             let rate = 1;
@@ -141,7 +164,10 @@
             if (speed === 'fast') {
                 rate = 1.2;
                 delay = 100;
-            } else if (speed === 'low') {
+            } else if (speed === 'veryfast') {
+                rate = 1.4;
+                delay = 50;
+            } else if (speed === 'slow') {
                 rate = 0.8;
                 delay = 300;
             }
@@ -176,6 +202,16 @@
             button.classList.add('active');
         }
 
+        function reverseText() {
+            const inputText = document.getElementById('inputText').value;
+            const lines = inputText.split('\n');
+            const reversedLines = lines.map(line => {
+                const parts = line.split(',');
+                return `${parts[1]},${parts[0]}${parts[2] ? ',' + parts[2] : ''}`;
+            });
+            document.getElementById('inputText').value = reversedLines.join('\n');
+        }
+
         function autoPlay() {
             autoPlayActive = true;
             autoPlayIndex = 0;
@@ -193,6 +229,63 @@
 
         function stopAutoPlay() {
             autoPlayActive = false;
+        }
+
+        function enterTestMode() {
+            testModeActive = true;
+            document.body.innerHTML = `
+                <button onclick="practiceMode()">Practice</button>
+                <button onclick="startTest()">Start</button>
+                <button onclick="stopTest()">Stop</button>
+                <button onclick="outputScores()">Output</button>
+                <div id="testOutput"></div>
+            `;
+        }
+
+        function practiceMode() {
+            testModeActive = false;
+            location.reload();
+        }
+
+        function startTest() {
+            const keys = Object.keys(scores).filter(key => scores[key] > -5 && scores[key] < 8);
+            if (keys.length === 0) {
+                alert('No more items to test.');
+                return;
+            }
+            const randomKey = keys[Math.floor(Math.random() * keys.length)];
+            const [sth1, sth2] = randomKey.split(',');
+            readText(sth1, sth2, scores[randomKey], null);
+            document.body.innerHTML += `
+                <button onclick="updateScore('${randomKey}', 3)">Perfect</button>
+                <button onclick="updateScore('${randomKey}', 1)">OK</button>
+                <button onclick="updateScore('${randomKey}', -1)">Bad</button>
+            `;
+        }
+
+        function stopTest() {
+            testModeActive = false;
+            document.getElementById('testOutput').innerHTML = '';
+        }
+
+        function updateScore(key, value) {
+            scores[key] = Math.min(8, Math.max(-5, scores[key] + value));
+            document.body.innerHTML = `
+                <button onclick="practiceMode()">Practice</button>
+                <button onclick="startTest()">Start</button>
+                <button onclick="stopTest()">Stop</button>
+                <button onclick="outputScores()">Output</button>
+                <div id="testOutput"></div>
+            `;
+        }
+
+        function outputScores() {
+            const outputText = Object.entries(scores)
+                .map(([key, value]) => `${key},${value}`)
+                .join('\n');
+            navigator.clipboard.writeText(outputText).then(() => {
+                alert('Scores copied to clipboard!');
+            });
         }
     </script>
 </body>
