@@ -47,7 +47,7 @@
 
         #output {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 10px;
         }
 
@@ -93,6 +93,8 @@
             background-color: #121212;
             padding: 10px;
             border-bottom: 1px solid #444444;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         select {
@@ -119,9 +121,8 @@
         <option value="normal">Normal</option>
         <option value="fast">Fast</option>
         <option value="veryfast">Very Fast</option>
-        <option value="low">Low</option>
+        <option value="slow">Slow</option>
     </select>
-    <button onclick="processText()">Submit</button>
     <div class="buttonArea">
         <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
         <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
@@ -133,6 +134,27 @@
         let autoPlayIndex = 0;
         let autoPlayActive = false;
 
+        document.getElementById('inputText').addEventListener('input', processText);
+        window.addEventListener('beforeunload', function (e) {
+            const inputText = document.getElementById('inputText').value;
+            if (inputText) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+
+        window.addEventListener('load', function () {
+            const savedText = localStorage.getItem('inputText');
+            if (savedText) {
+                document.getElementById('inputText').value = savedText;
+                processText();
+            }
+        });
+
+        document.getElementById('inputText').addEventListener('input', function () {
+            localStorage.setItem('inputText', this.value);
+        });
+
         function processText() {
             const inputText = document.getElementById('inputText').value;
             const lines = inputText.split('\n');
@@ -143,9 +165,18 @@
                 const [sth1, sth2] = line.split(',');
                 const id = index + 1;
                 const element = document.createElement('div');
-                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
+                element.innerHTML = `<button onclick="toggleText('${sth1}', '${sth2}', this)">${sth1}</button><span style="display:none;">${sth2}</span>`;
                 outputDiv.appendChild(element);
             });
+        }
+
+        function toggleText(sth1, sth2, button) {
+            const span = button.nextElementSibling;
+            if (span.style.display === 'none') {
+                span.style.display = 'inline';
+            } else {
+                span.style.display = 'none';
+            }
         }
 
         function readText(sth1, sth2, button) {
@@ -160,7 +191,7 @@
             } else if (speed === 'veryfast') {
                 rate = 1.5;
                 delay = 50;
-            } else if (speed === 'low') {
+            } else if (speed === 'slow') {
                 rate = 0.8;
                 delay = 300;
             }
