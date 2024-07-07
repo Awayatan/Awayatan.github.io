@@ -26,11 +26,11 @@
         }
 
         textarea:focus {
-            border-color: #1e88e5;
+            border-color: #ff69b4;
         }
 
         button {
-            background-color: #1e88e5;
+            background-color: #ff69b4;
             color: #ffffff;
             border: none;
             border-radius: 20px;
@@ -41,7 +41,7 @@
         }
 
         button:hover {
-            background-color: #1565c0;
+            background-color: #ff1493;
             transform: scale(1.05);
         }
 
@@ -56,7 +56,7 @@
         }
 
         #output button {
-            background-color: #26a69a;
+            background-color: #ff69b4;
             color: #ffffff;
             border: none;
             border-radius: 20px;
@@ -67,12 +67,12 @@
         }
 
         #output button:hover {
-            background-color: #00796b;
+            background-color: #ff1493;
             transform: scale(1.05);
         }
 
         #output button.active {
-            background-color: #ff5722;
+            background-color: #ff4500;
             transform: scale(1.1);
         }
 
@@ -80,7 +80,7 @@
             position: fixed;
             bottom: 10px;
             right: 10px;
-            display! flex;
+            display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: flex-end;
@@ -93,6 +93,8 @@
             background-color: #121212;
             padding: 10px;
             border-bottom: 1px solid #444444;
+            font-size: 1.2em;
+            font-weight: bold;
         }
 
         select {
@@ -106,31 +108,48 @@
         }
 
         select:focus {
-            border-color: #1e88e5;
+            border-color: #ff69b4;
         }
     </style>
 </head>
 <body>
     <div id="nowPlaying">再生中: なし</div>
-    <p>デモサイトです。各行「english, 日本語」となるように入れればうまいこと行くかもしれないというだけ。</p>
+    <p>デモサイトです。</p>
+<p><ol><li> english, 日本語となるように入力します（ほかの言語や逆方向は未対応）。</li>
+<li>auto-playまたはrandom-playを押します。順に、またはランダムに再生します（リセットしなければどちらか片方のみしか再生できません）。</li>
+<li>Stopで止めることができます。これは一時停止です。</li>
+<li>Resetを押すことで、完全に停止することができます。autoかrandomかを変更するときもこれを使います。</li>
+</ol></p>
+<p>なにかあればmisskey(<a href="https://misskey.io/@awayatan">@awayatan</a>またはTwitter/X（<a href="https://twitter.com/awayatan">@awayatan</a>まで。</p>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
     <label for="speed">Speed:</label>
     <select id="speed">
         <option value="normal">Normal</option>
         <option value="fast">Fast</option>
         <option value="veryfast">Very Fast</option>
-        <option value="low">Low</option>
+        <option value="slow">Slow</option>
     </select>
-    <button onclick="processText()">Submit</button>
     <div class="buttonArea">
         <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
+        <button id="randomPlayButton" onclick="randomPlay()">Random-Play</button>
         <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
+        <button id="resetButton" onclick="resetPlayback()">Reset</button>
     </div>
     <div id="output"></div>
 
     <script>
         let autoPlayIndex = 0;
         let autoPlayActive = false;
+        let randomPlayActive = false;
+        let playbackOrder = [];
+
+        document.getElementById('inputText').addEventListener('input', processText);
+        window.addEventListener('beforeunload', function (e) {
+            if (document.getElementById('inputText').value !== '') {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
 
         function processText() {
             const inputText = document.getElementById('inputText').value;
@@ -159,7 +178,7 @@
             } else if (speed === 'veryfast') {
                 rate = 1.5;
                 delay = 50;
-            } else if (speed === 'low') {
+            } else if (speed === 'slow') {
                 rate = 0.8;
                 delay = 300;
             }
@@ -184,6 +203,8 @@
                         if (autoPlayActive) {
                             autoPlayIndex++;
                             setTimeout(autoPlayNext, delay);
+                        } else if (randomPlayActive) {
+                            setTimeout(randomPlayNext, delay);
                         }
                     };
                 }, delay);
@@ -196,8 +217,10 @@
 
         function autoPlay() {
             autoPlayActive = true;
+            randomPlayActive = false;
             autoPlayIndex = 0;
             autoPlayNext();
+            toggleButtons(true);
         }
 
         function autoPlayNext() {
@@ -206,12 +229,87 @@
                 buttons[autoPlayIndex].click();
             } else {
                 autoPlayActive = false;
+                toggleButtons(false);
+            }
+        }
+
+        function randomPlay() {
+            autoPlayActive = false;
+            randomPlayActive = true;
+            playbackOrder = Array.from(document.querySelectorAll('#output button')).map((_, i) => i);
+            shuffleArray(playbackOrder);
+            autoPlayIndex = 0;
+            randomPlayNext();
+            toggleButtons(true);
+        }
+
+        function randomPlayNext() {
+            const buttons = document.querySelectorAll('#output button');
+            if (autoPlayIndex < playbackOrder.length) {
+                buttons[playbackOrder[autoPlayIndex]].click();
+                autoPlayIndex++;
+            } else {
+                randomPlayActive = false;
+                toggleButtons(false);
             }
         }
 
         function stopAutoPlay() {
             autoPlayActive = false;
+            randomPlayActive = false;
+            toggleButtons(false);
         }
+
+        function resetPlayback() {
+            autoPlayIndex = 0;
+            playbackOrder = [];
+            stopAutoPlay();
+        }
+
+        function toggleButtons(disable) {
+            document.getElementById('autoPlayButton').disabled = disable;
+            document.getElementById('randomPlayButton').disabled = disable;
+            document.getElementById('stopButton').disabled = !disable;
+            document.getElementById('resetButton').disabled = !disable;
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        window.onload = function() {
+            const savedText = localStorage.getItem('inputText');
+            if (savedText) {
+                document.getElementById('inputText').value = savedText;
+                processText();
+            }
+        };
+
+        document.getElementById('inputText').addEventListener('input', function() {
+            localStorage.setItem('inputText', this.value);
+        });
+
+        // Prevent conflicting button presses
+        document.getElementById('autoPlayButton').addEventListener('click', function() {
+            document.getElementById('randomPlayButton').disabled = true;
+        });
+
+        document.getElementById('randomPlayButton').addEventListener('click', function() {
+            document.getElementById('autoPlayButton').disabled = true;
+        });
+
+        document.getElementById('stopButton').addEventListener('click', function() {
+            document.getElementById('autoPlayButton').disabled = false;
+            document.getElementById('randomPlayButton').disabled = false;
+        });
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            document.getElementById('autoPlayButton').disabled = false;
+            document.getElementById('randomPlayButton').disabled = false;
+        });
     </script>
 </body>
 </html>
