@@ -85,14 +85,20 @@
             transform: scale(1.1);
         }
 
-        #buttonArea {
+        #controlDiv {
             position: fixed;
             bottom: 10px;
             right: 10px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            align-items: flex-end;
+            gap: 10px;
+        }
+
+        #buttonArea {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         #nowPlaying {
@@ -117,12 +123,6 @@
 
         select:focus {
             border-color: #ff69b4;
-        }
-
-        #speed {
-            position: fixed;
-            bottom: 70px;
-            right: 10px;
         }
 
         .control-button {
@@ -161,20 +161,23 @@
     </details>
     <p>なにかあればmisskey.io(<a href="https://misskey.io/@awayatan">@awayatan</a>）またはTwitter/X（<a href="https://twitter.com/awayatan">@awayatan</a>）まで。</p>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
-    <label for="speed" style="position: fixed; bottom: 120px; right: 10px;">Speed:</label>
-    <select id="speed">
-        <option value="normal">Normal</option>
-        <option value="fast">Fast</option>
-        <option value="veryfast">Very Fast</option>
-        <option value="slow">Slow</option>
-    </select>
-    <div id="buttonArea">
-        <button class="control-button" id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
-        <button class="control-button" id="randomPlayButton" onclick="randomPlay()">Random-Play</button>
-        <button class="control-button" id="stopButton" onclick="stopAutoPlay()">Stop</button>
-        <button class="control-button" id="resetButton" onclick="resetPlayback()">Reset</button>
+    <div id="controlDiv">
+        <label for="speed">Speed:</label>
+        <select id="speed">
+            <option value="normal">Normal</option>
+            <option value="fast">Fast</option>
+            <option value="veryfast">Very Fast</option>
+            <option value="slow">Slow</option>
+        </select>
+        <div id="buttonArea">
+            <button class="control-button" id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
+            <button class="control-button" id="randomPlayButton" onclick="randomPlay()">Random-Play</button>
+            <button class="control-button" id="stopButton" onclick="stopAutoPlay()">Stop</button>
+            <button class="control-button" id="resetButton" onclick="resetPlayback()">Reset</button>
+        </div>
     </div>
     <div id="output"></div>
+
 
     <script>
         let autoPlayIndex = 0;
