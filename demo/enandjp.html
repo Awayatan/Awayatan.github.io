@@ -186,6 +186,7 @@
         <option value="fr-FR">Français</option>
         <option value="sv-SE">Svenska</option>
     </select>
+<button id="reverseButton" onclick="reverseTextAndLanguages()">Reverse</button>
 </div>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
     <div id="controlDiv">
@@ -383,6 +384,23 @@
             document.getElementById('autoPlayButton').disabled = false;
             document.getElementById('randomPlayButton').disabled = false;
         });
+
+function reverseTextAndLanguages() {
+    const lang1 = document.getElementById('lang1');
+    const lang2 = document.getElementById('lang2');
+    const tempLang = lang1.value;
+    lang1.value = lang2.value;
+    lang2.value = tempLang;
+
+    const inputText = document.getElementById('inputText').value;
+    const lines = inputText.split('\n');
+    const reversedLines = lines.map(line => {
+        const [part1, part2] = line.split(',');
+        return `${part2},${part1}`;
+    });
+    document.getElementById('inputText').value = reversedLines.join('\n');
+}
+
     </script>
 </body>
 </html>
