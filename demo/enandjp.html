@@ -244,51 +244,56 @@
 
         // テキストの処理
         function readText(sth1, sth2, id, button) {
-            const synth = window.speechSynthesis;
-            const speed = document.getElementById('speed').value;
-            const lang1 = document.getElementById('lang1').value;
-            const lang2 = document.getElementById('lang2').value;
-            let rate = 1;
-            let delay = 200;
+        const synth = window.speechSynthesis;
+        const speed = document.getElementById('speed').value;
+        const lang1 = document.getElementById('lang1').value;
+        const lang2 = document.getElementById('lang2').value;
+        let rate = 1;
+        let delay = 200;
 
-            if (speed === 'fast') {
-                rate = 1.2;
-                delay = 100;
-            } else if (speed === 'veryfast') {
-                rate = 1.5;
-                delay = 50;
-            } else if (speed === 'slow') {
-                rate = 0.8;
-                delay = 300;
-            }
+        if (speed === 'fast') {
+            rate = 1.2;
+            delay = 100;
+        } else if (speed === 'veryfast') {
+            rate = 1.5;
+            delay = 50;
+        } else if (speed === 'slow') {
+            rate = 0.8;
+            delay = 300;
+        }
 
-            const utterThis1 = new SpeechSynthesisUtterance(sth1);
-            utterThis1.lang = lang1;
-            utterThis1.rate = rate;
-            synth.speak(utterThis1);
+        const utterThis1 = new SpeechSynthesisUtterance(sth1);
+        utterThis1.lang = lang1;
+        utterThis1.rate = rate;
+        synth.speak(utterThis1);
 
-            document.getElementById('nowPlaying').innerText = `再生中: ${sth1}`;
+        document.getElementById('nowPlaying').innerText = `再生中: ${sth1}`;
 
-            utterThis1.onend = function() {
-                setTimeout(() => {
-                    const utterThis2 = new SpeechSynthesisUtterance(sth2);
-                    utterThis2.lang = lang2;
-                    utterThis2.rate = rate;
-                    synth.speak(utterThis2);
+        utterThis1.onend = function() {
+            setTimeout(() => {
+                const utterThis2 = new SpeechSynthesisUtterance(sth2);
+                utterThis2.lang = lang2;
+                utterThis2.rate = rate;
+                synth.speak(utterThis2);
 
-                    document.getElementById('nowPlaying').innerText = `再生中: ${sth2}`;
+                document.getElementById('nowPlaying').innerText = `再生中: ${sth2}`;
 
-                    utterThis2.onend = function() {
-                        if (autoPlayActive) {
-                            autoPlayIndex++;
-                            setTimeout(autoPlayNext, delay);
-                        } else if (randomPlayActive) {
-                            setTimeout(randomPlayNext, delay);
-                        }
-                    };
-                }, delay);
-                autoPlayIndex = id;
-            };
+                utterThis2.onend = function() {
+                    if (autoPlayActive) {
+                        autoPlayIndex++;
+                        setTimeout(autoPlayNext, delay);
+                    } else if (randomPlayActive) {
+                        setTimeout(randomPlayNext, delay);
+                    }
+                };
+        }, delay);
+    };
+
+
+    const buttons = document.querySelectorAll('#output button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+}
 
             const buttons = document.querySelectorAll('#output button');
             buttons.forEach(btn => btn.classList.remove('active'));
