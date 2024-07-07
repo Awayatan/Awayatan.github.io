@@ -13,6 +13,16 @@
             padding: 20px;
         }
 
+a {
+    color: #00bfff; /* Light blue color for visibility */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    color: #1e90ff; /* Slightly darker blue on hover */
+}
+
+
         textarea {
             background-color: #333333;
             color: #ffffff;
@@ -77,7 +87,7 @@
         }
 
         #buttonArea {
-            position: fixed;
+            position: sticky;
             bottom: 10px;
             right: 10px;
             display: flex;
@@ -87,7 +97,6 @@
         }
 
         #nowPlaying {
-            position: -webkit-sticky;
             position: sticky;
             top: 0;
             background-color: #121212;
@@ -120,7 +129,7 @@
 <li>Stopで止めることができます。これは一時停止です。</li>
 <li>Resetを押すことで、完全に停止することができます。autoかrandomかを変更するときもこれを使います。</li>
 </ol></p>
-<p>なにかあればmisskey(<a href="https://misskey.io/@awayatan">@awayatan</a>またはTwitter/X（<a href="https://twitter.com/awayatan">@awayatan</a>まで。</p>
+<p>なにかあればmisskey.io(<a href="https://misskey.io/@awayatan">@awayatan</a>）またはTwitter/X（<a href="https://twitter.com/awayatan">@awayatan</a>）まで。</p>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
     <label for="speed">Speed:</label>
     <select id="speed">
@@ -226,6 +235,7 @@
         function autoPlayNext() {
             const buttons = document.querySelectorAll('#output button');
             if (autoPlayIndex < buttons.length) {
+                buttons[autoPlayIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
                 buttons[autoPlayIndex].click();
             } else {
                 autoPlayActive = false;
@@ -280,6 +290,7 @@
             }
         }
 
+        // Preserve textarea content on reload
         window.onload = function() {
             const savedText = localStorage.getItem('inputText');
             if (savedText) {
