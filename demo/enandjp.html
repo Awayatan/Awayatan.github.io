@@ -216,7 +216,6 @@
     </div>
     <div id="output"></div>
 
-
     <script>
         let autoPlayIndex = 0;
         let autoPlayActive = false;
@@ -366,14 +365,13 @@
 
 window.onload = function() {
     const savedText = localStorage.getItem('inputText');
-    if (savedText) {
-        document.getElementById('inputText').value = savedText;
-        processText();
-    }
-
     const savedLang1 = localStorage.getItem('lang1');
     const savedLang2 = localStorage.getItem('lang2');
     const savedSeparator = localStorage.getItem('separator');
+
+    if (savedText) {
+        document.getElementById('inputText').value = savedText;
+    }
     if (savedLang1) {
         document.getElementById('lang1').value = savedLang1;
     }
@@ -383,6 +381,8 @@ window.onload = function() {
     if (savedSeparator) {
         document.getElementById('separator').value = savedSeparator;
     }
+
+    processText();
 };
         document.getElementById('inputText').addEventListener('input', function() {
             localStorage.setItem('inputText', this.value);
