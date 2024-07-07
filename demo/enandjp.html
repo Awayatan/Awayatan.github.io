@@ -13,15 +13,14 @@
             padding: 20px;
         }
 
-a {
-    color: #00bfff; /* Light blue color for visibility */
-    text-decoration: none; /* Remove underline */
-}
+        a {
+            color: #00bfff;
+            text-decoration: none;
+        }
 
-a:hover {
-    color: #1e90ff; /* Slightly darker blue on hover */
-}
-
+        a:hover {
+            color: #1e90ff;
+        }
 
         textarea {
             background-color: #333333;
@@ -87,7 +86,7 @@ a:hover {
         }
 
         #buttonArea {
-            position: sticky;
+            position: fixed;
             bottom: 10px;
             right: 10px;
             display: flex;
@@ -119,15 +118,21 @@ a:hover {
         select:focus {
             border-color: #ff69b4;
         }
+
+        #speed {
+            position: fixed;
+            bottom: 70px;
+            right: 10px;
+        }
     </style>
 </head>
 <body>
     <div id="nowPlaying">再生中: なし</div>
     <p>デモサイトです。</p>
 <p><ol><li> english, 日本語となるように入力します（ほかの言語や逆方向は未対応）。</li>
-<li>auto-playまたはrandom-playを押します。順に、またはランダムに再生します（リセットしなければどちらか片方のみしか再生できません）。</li>
+<li>auto-playまたはrandom-playを押します。順に、またはランダムに再生します。</li>
 <li>Stopで止めることができます。これは一時停止です。</li>
-<li>Resetを押すことで、完全に停止することができます。autoかrandomかを変更するときもこれを使います。</li>
+<li>Resetを押すことで、完全に停止することができます。</li>
 </ol></p>
 <p>なにかあればmisskey.io(<a href="https://misskey.io/@awayatan">@awayatan</a>）またはTwitter/X（<a href="https://twitter.com/awayatan">@awayatan</a>）まで。</p>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
