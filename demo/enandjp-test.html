@@ -126,13 +126,14 @@
     <div class="buttonArea">
         <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
         <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
-        <button id="randomButton" onclick="randomPlay()">Random</button>
+        <button id="randomButton" onclick="randomAutoPlay()">Random</button>
     </div>
     <div id="output"></div>
 
     <script>
         let autoPlayIndex = 0;
         let autoPlayActive = false;
+        let randomOrder = [];
 
         document.getElementById('inputText').addEventListener('input', processText);
         window.addEventListener('beforeunload', function (e) {
@@ -245,10 +246,28 @@
             autoPlayActive = false;
         }
 
-        function randomPlay() {
+        function randomAutoPlay() {
+            autoPlayActive = true;
+            autoPlayIndex = 0;
+            randomOrder = Array.from({ length: document.querySelectorAll('#output button').length }, (_, i) => i);
+            shuffleArray(randomOrder);
+            autoPlayNextRandom();
+        }
+
+        function autoPlayNextRandom() {
             const buttons = document.querySelectorAll('#output button');
-            const randomIndex = Math.floor(Math.random() * buttons.length);
-            buttons[randomIndex].click();
+            if (autoPlayIndex < randomOrder.length) {
+                buttons[randomOrder[autoPlayIndex]].click();
+            } else {
+                autoPlayActive = false;
+            }
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
         }
     </script>
 </body>
