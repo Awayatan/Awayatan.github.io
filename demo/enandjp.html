@@ -161,6 +161,32 @@
         </ol>
     </details>
     <p>なにかあればmisskey.io(<a href="https://misskey.io/@awayatan">@awayatan</a>）またはTwitter/X（<a href="https://twitter.com/awayatan">@awayatan</a>）まで。</p>
+<div>
+    <label for="lang1">First Language:</label>
+    <select id="lang1">
+        <option value="en-GB" selected>English</option>
+        <option value="ko-KR">한국어</option>
+        <option value="zh-CN">中文</option>
+        <option value="en-US">English (US)</option>
+        <option value="ja-JP">日本語</option>
+        <option value="it-IT">Italiano</option>
+        <option value="de-DE">Deutsch</option>
+        <option value="fr-FR">Français</option>
+        <option value="sv-SE">Svenska</option>
+    </select>
+    <label for="lang2">Second Language:</label>
+    <select id="lang2">
+        <option value="en-GB">English</option>
+        <option value="ko-KR">한국어</option>
+        <option value="zh-CN">中文</option>
+        <option value="en-US">English (US)</option>
+        <option value="ja-JP" selected>日本語</option>
+        <option value="it-IT">Italiano</option>
+        <option value="de-DE">Deutsch</option>
+        <option value="fr-FR">Français</option>
+        <option value="sv-SE">Svenska</option>
+    </select>
+</div>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
     <div id="controlDiv">
         <label for="speed">Speed:</label>
@@ -212,6 +238,8 @@
         function readText(sth1, sth2, button) {
             const synth = window.speechSynthesis;
             const speed = document.getElementById('speed').value;
+            const lang1 = document.getElementById('lang1').value;
+            const lang2 = document.getElementById('lang2').value;
             let rate = 1;
             let delay = 200;
 
@@ -227,7 +255,7 @@
             }
 
             const utterThis1 = new SpeechSynthesisUtterance(sth1);
-            utterThis1.lang = 'en-GB';
+            utterThis1.lang = lang1;
             utterThis1.rate = rate;
             synth.speak(utterThis1);
 
@@ -236,7 +264,7 @@
             utterThis1.onend = function() {
                 setTimeout(() => {
                     const utterThis2 = new SpeechSynthesisUtterance(sth2);
-                    utterThis2.lang = 'ja-JP';
+                    utterThis2.lang = lang2;
                     utterThis2.rate = rate;
                     synth.speak(utterThis2);
 
