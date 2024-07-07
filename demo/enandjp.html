@@ -353,18 +353,33 @@
             }
         }
 
-        // Preserve textarea content on reload
-        window.onload = function() {
-            const savedText = localStorage.getItem('inputText');
-            if (savedText) {
-                document.getElementById('inputText').value = savedText;
-                processText();
-            }
-        };
+window.onload = function() {
+    const savedText = localStorage.getItem('inputText');
+    if (savedText) {
+        document.getElementById('inputText').value = savedText;
+        processText();
+    }
 
+    const savedLang1 = localStorage.getItem('lang1');
+    const savedLang2 = localStorage.getItem('lang2');
+    if (savedLang1) {
+        document.getElementById('lang1').value = savedLang1;
+    }
+    if (savedLang2) {
+        document.getElementById('lang2').value = savedLang2;
+    }
+};
         document.getElementById('inputText').addEventListener('input', function() {
             localStorage.setItem('inputText', this.value);
         });
+
+document.getElementById('lang1').addEventListener('change', function() {
+    localStorage.setItem('lang1', this.value);
+});
+
+document.getElementById('lang2').addEventListener('change', function() {
+    localStorage.setItem('lang2', this.value);
+});
 
         // Prevent conflicting button presses
         document.getElementById('autoPlayButton').addEventListener('click', function() {
@@ -391,6 +406,9 @@ function reverseTextAndLanguages() {
     const tempLang = lang1.value;
     lang1.value = lang2.value;
     lang2.value = tempLang;
+
+    localStorage.setItem('lang1', lang1.value);
+    localStorage.setItem('lang2', lang2.value);
 
     const inputText = document.getElementById('inputText').value;
     const lines = inputText.split('\n');
