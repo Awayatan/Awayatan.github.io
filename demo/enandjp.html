@@ -18,10 +18,6 @@
             text-decoration: none;
         }
 
-        a:hover {
-            color: #1e90ff;
-        }
-
         textarea {
             background-color: #333333;
             color: #ffffff;
@@ -85,19 +81,18 @@
         }
 
         #controlDiv {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 85svw;
-    height: fit-content;
-    margin: auto auto 40px;
-    padding: 20px;
-    align-items: center;
-    background-color: #323232;
-}
-
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 85svw;
+            height: fit-content;
+            margin: auto auto 40px;
+            padding: 20px;
+            align-items: center;
+            background-color: #323232;
+        }
 
         #buttonArea {
             display: flex;
@@ -155,13 +150,13 @@
         <summary>使い方</summary>
         <ol>
             <li>separatorを選択しておきます。</li>
-<li>separatorを間に挟み、コピペか入力します（例：cat, 猫）</li>
-<li>言語が異なる場合、メニューから変更します。</li>
+            <li>separatorを間に挟み、コピペか入力します（例：cat, 猫）</li>
+            <li>言語が異なる場合、メニューから変更します。</li>
             <li>auto-playまたはrandom-playを押します。順に、またはランダムに再生します。</li>
             <li>Stopで止めることができます。これは一時停止です。再度再生するときはそこから始まります。</li>
             <li>Resetを押すことで、完全に停止することができます。再度再生するときは最初から始まります。</li>
-<li>反対もやりたい時はreverseを押すことで逆転します。</li>
-<li>言語選択や入力はローカルストレージに保存されています。複数タブ開いている場合は特にお気をつけください（サーバーへの保存はありません）。</li>
+            <li>反対もやりたい時はreverseを押すことで逆転します。</li>
+            <li>言語選択や入力はローカルストレージに保存されています。複数タブ開いている場合は特にお気をつけください（サーバーへの保存はありません）。</li>
         </ol>
     </details>
     <p>なにかあればmisskey.io(<a href="https://misskey.io/@awayatan">@awayatan</a>）またはTwitter/X（<a href="https://twitter.com/awayatan">@awayatan</a>）まで。</p>
@@ -175,10 +170,10 @@
     <label for="lang1">First Language:</label>
     <select id="lang1">
         <option value="en-GB" selected>English</option>
-        <option value="ko-KR">한국어</option>
-        <option value="zh-CN">中文</option>
         <option value="en-US">English (US)</option>
         <option value="ja-JP">日本語</option>
+        <option value="ko-KR">한국어</option>
+        <option value="zh-CN">中文</option>
         <option value="it-IT">Italiano</option>
         <option value="de-DE">Deutsch</option>
         <option value="fr-FR">Français</option>
@@ -187,24 +182,24 @@
     <label for="lang2">Second Language:</label>
     <select id="lang2">
         <option value="en-GB">English</option>
-        <option value="ko-KR">한국어</option>
-        <option value="zh-CN">中文</option>
         <option value="en-US">English (US)</option>
         <option value="ja-JP" selected>日本語</option>
+        <option value="ko-KR">한국어</option>
+        <option value="zh-CN">中文</option>
         <option value="it-IT">Italiano</option>
         <option value="de-DE">Deutsch</option>
         <option value="fr-FR">Français</option>
         <option value="sv-SE">Svenska</option>
     </select>
-<button id="reverseButton" onclick="reverseTextAndLanguages()">Reverse</button>
+    <button id="reverseButton" onclick="reverseTextAndLanguages()">Reverse</button>
 </div>
     <textarea id="inputText" rows="10" cols="50"></textarea><br>
     <div id="controlDiv">
         <label for="speed">Speed:</label>
         <select id="speed">
-            <option value="normal">Normal</option>
-            <option value="fast">Fast</option>
             <option value="veryfast">Very Fast</option>
+            <option value="fast">Fast</option>
+            <option value="normal" selected>Normal</option>
             <option value="slow">Slow</option>
         </select>
         <div id="buttonArea">
@@ -230,22 +225,24 @@
             }
         });
 
+        // inputを処理
        function processText() {
-    const inputText = document.getElementById('inputText').value;
-    const separator = document.getElementById('separator').value === 'comma' ? ',' : '\t';
-    const lines = inputText.split('\n');
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML = '';
+            const inputText = document.getElementById('inputText').value;
+            const separator = document.getElementById('separator').value === 'comma' ? ',' : '\t';
+            const lines = inputText.split('\n');
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
 
-    lines.forEach((line, index) => {
-        const [sth1, sth2] = line.split(separator);
-        const id = index + 1;
-        const element = document.createElement('div');
-        element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
-        outputDiv.appendChild(element);
-    });
-}
+            lines.forEach((line, index) => {
+                const [sth1, sth2] = line.split(separator);
+                const id = index + 1;
+                const element = document.createElement('div');
+                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
+                outputDiv.appendChild(element);
+            });
+        }
 
+        // テキストの処理
         function readText(sth1, sth2, button) {
             const synth = window.speechSynthesis;
             const speed = document.getElementById('speed').value;
@@ -300,7 +297,6 @@
         function autoPlay() {
             autoPlayActive = true;
             randomPlayActive = false;
-            autoPlayIndex = 0;
             autoPlayNext();
             toggleButtons(true);
         }
@@ -363,45 +359,45 @@
             }
         }
 
-window.onload = function() {
-    const savedText = localStorage.getItem('inputText');
-    const savedLang1 = localStorage.getItem('lang1');
-    const savedLang2 = localStorage.getItem('lang2');
-    const savedSeparator = localStorage.getItem('separator');
+        window.onload = function() {
+            const savedText = localStorage.getItem('inputText');
+            const savedLang1 = localStorage.getItem('lang1');
+            const savedLang2 = localStorage.getItem('lang2');
+            const savedSeparator = localStorage.getItem('separator');
 
-    if (savedText) {
-        document.getElementById('inputText').value = savedText;
-    }
-    if (savedLang1) {
-        document.getElementById('lang1').value = savedLang1;
-    }
-    if (savedLang2) {
-        document.getElementById('lang2').value = savedLang2;
-    }
-    if (savedSeparator) {
-        document.getElementById('separator').value = savedSeparator;
-    }
+            if (savedText) {
+                document.getElementById('inputText').value = savedText;
+            }
+            if (savedLang1) {
+                document.getElementById('lang1').value = savedLang1;
+            }
+            if (savedLang2) {
+                document.getElementById('lang2').value = savedLang2;
+            }
+            if (savedSeparator) {
+                document.getElementById('separator').value = savedSeparator;
+            }
 
-    processText();
-};
+            processText();
+        };
+        
         document.getElementById('inputText').addEventListener('input', function() {
             localStorage.setItem('inputText', this.value);
         });
 
-document.getElementById('lang1').addEventListener('change', function() {
-    localStorage.setItem('lang1', this.value);
-});
+        document.getElementById('lang1').addEventListener('change', function() {
+            localStorage.setItem('lang1', this.value);
+        });
 
-document.getElementById('lang2').addEventListener('change', function() {
-    localStorage.setItem('lang2', this.value);
-});
+        document.getElementById('lang2').addEventListener('change', function() {
+            localStorage.setItem('lang2', this.value);
+        });
 
-document.getElementById('separator').addEventListener('change', function() {
-    localStorage.setItem('separator', this.value);
-    processText();
-});
-
-        // Prevent conflicting button presses
+        document.getElementById('separator').addEventListener('change', function() {
+            localStorage.setItem('separator', this.value);
+            processText();
+        });
+        
         document.getElementById('autoPlayButton').addEventListener('click', function() {
             document.getElementById('randomPlayButton').disabled = true;
         });
@@ -420,48 +416,41 @@ document.getElementById('separator').addEventListener('change', function() {
             document.getElementById('randomPlayButton').disabled = false;
         });
 
-function reverseTextAndLanguages() {
-    // 言語設定を逆にする
-    const lang1 = document.getElementById('lang1');
-    const lang2 = document.getElementById('lang2');
-    const tempLang = lang1.value;
-    lang1.value = lang2.value;
-    lang2.value = tempLang;
+        function reverseTextAndLanguages() {
+            const lang1 = document.getElementById('lang1');
+            const lang2 = document.getElementById('lang2');
+            const tempLang = lang1.value;
+            lang1.value = lang2.value;
+            lang2.value = tempLang;
 
-    // 言語設定をローカルストレージに保存
-    localStorage.setItem('lang1', lang1.value);
-    localStorage.setItem('lang2', lang2.value);
+            localStorage.setItem('lang1', lang1.value);
+            localStorage.setItem('lang2', lang2.value);
 
-    // テキストエリアの内容を逆にする
-    const inputText = document.getElementById('inputText').value;
-    const separator = document.getElementById('separator').value === 'comma' ? ',' : '\t';
-    const lines = inputText.split('\n');
-    const reversedLines = lines.map(line => {
-        const [part1, part2] = line.split(separator);
-        return `${part2}${separator}${part1}`;
-    });
-    document.getElementById('inputText').value = reversedLines.join('\n');
+            const inputText = document.getElementById('inputText').value;
+            const separator = document.getElementById('separator').value === 'comma' ? ',' : '\t';
+            const lines = inputText.split('\n');
+            const reversedLines = lines.map(line => {
+                const [part1, part2] = line.split(separator);
+                return `${part2}${separator}${part1}`;
+            });
+            document.getElementById('inputText').value = reversedLines.join('\n');
 
-    // テキストエリアの内容をローカルストレージに保存
-    localStorage.setItem('inputText', document.getElementById('inputText').value);
+            localStorage.setItem('inputText', document.getElementById('inputText').value);
 
-    // ボタンのラベルを更新
-    processText();
-}
+            processText();
+        }
 
-document.getElementById('inputText').addEventListener('keydown', function(e) {
-    if (e.key === 'Tab') {
-        e.preventDefault();
-        const start = this.selectionStart;
-        const end = this.selectionEnd;
+        document.getElementById('inputText').addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
 
-        // タブ文字を挿入
-        this.value = this.value.substring(0, start) + '\t' + this.value.substring(end);
+                this.value = this.value.substring(0, start) + '\t' + this.value.substring(end);
 
-        // カーソル位置を調整
-        this.selectionStart = this.selectionEnd = start + 1;
-    }
-});
+                this.selectionStart = this.selectionEnd = start + 1;
+            }
+        });
     </script>
 </body>
 </html>
