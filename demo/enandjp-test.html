@@ -26,11 +26,11 @@
         }
 
         textarea:focus {
-            border-color: #1e88e5;
+            border-color: #ff69b4;
         }
 
         button {
-            background-color: #1e88e5;
+            background-color: #ff69b4;
             color: #ffffff;
             border: none;
             border-radius: 20px;
@@ -41,7 +41,7 @@
         }
 
         button:hover {
-            background-color: #1565c0;
+            background-color: #ff1493;
             transform: scale(1.05);
         }
 
@@ -56,7 +56,7 @@
         }
 
         #output button {
-            background-color: #26a69a;
+            background-color: #ff69b4;
             color: #ffffff;
             border: none;
             border-radius: 20px;
@@ -67,12 +67,12 @@
         }
 
         #output button:hover {
-            background-color: #00796b;
+            background-color: #ff1493;
             transform: scale(1.05);
         }
 
         #output button.active {
-            background-color: #ff5722;
+            background-color: #ff4500;
             transform: scale(1.1);
         }
 
@@ -80,7 +80,7 @@
             position: fixed;
             bottom: 10px;
             right: 10px;
-            display! flex;
+            display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: flex-end;
@@ -106,29 +106,7 @@
         }
 
         select:focus {
-            border-color: #1e88e5;
-        }
-
-        .test-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .test-buttons button {
-            background-color: #1e88e5;
-            color: #ffffff;
-            border: none;
-            border-radius: 20px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .test-buttons button:hover {
-            background-color: #1565c0;
-            transform: scale(1.05);
+            border-color: #ff69b4;
         }
     </style>
 </head>
@@ -141,27 +119,19 @@
         <option value="normal">Normal</option>
         <option value="fast">Fast</option>
         <option value="veryfast">Very Fast</option>
-        <option value="slow">Slow</option>
+        <option value="low">Low</option>
     </select>
     <button onclick="processText()">Submit</button>
-    <button onclick="reverseText()">Reverse</button>
-    <button onclick="enterTestMode()">Test</button>
     <div class="buttonArea">
         <button id="autoPlayButton" onclick="autoPlay()">Auto-Play</button>
         <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
+        <button id="randomButton" onclick="randomPlay()">Random</button>
     </div>
     <div id="output"></div>
 
     <script>
         let autoPlayIndex = 0;
         let autoPlayActive = false;
-        let testModeActive = false;
-        let scores = JSON.parse(localStorage.getItem('scores')) || {};
-
-        window.addEventListener('beforeunload', function (e) {
-            e.preventDefault();
-            e.returnValue = '';
-        });
 
         function processText() {
             const inputText = document.getElementById('inputText').value;
@@ -170,21 +140,15 @@
             outputDiv.innerHTML = '';
 
             lines.forEach((line, index) => {
-                const parts = line.split(',');
-                const sth1 = parts[0];
-                const sth2 = parts[1];
-                const num = parts[2] ? parseInt(parts[2]) : 0;
+                const [sth1, sth2] = line.split(',');
                 const id = index + 1;
                 const element = document.createElement('div');
-                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', ${num}, this)">${sth1}</button>`;
+                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
                 outputDiv.appendChild(element);
-                scores[`${sth1},${sth2}`] = num;
             });
-
-            localStorage.setItem('scores', JSON.stringify(scores));
         }
 
-        function readText(sth1, sth2, num, button) {
+        function readText(sth1, sth2, button) {
             const synth = window.speechSynthesis;
             const speed = document.getElementById('speed').value;
             let rate = 1;
@@ -194,9 +158,9 @@
                 rate = 1.2;
                 delay = 100;
             } else if (speed === 'veryfast') {
-                rate = 1.4;
+                rate = 1.5;
                 delay = 50;
-            } else if (speed === 'slow') {
+            } else if (speed === 'low') {
                 rate = 0.8;
                 delay = 300;
             }
@@ -228,17 +192,7 @@
 
             const buttons = document.querySelectorAll('#output button');
             buttons.forEach(btn => btn.classList.remove('active'));
-            if (button) button.classList.add('active');
-        }
-
-        function reverseText() {
-            const inputText = document.getElementById('inputText').value;
-            const lines = inputText.split('\n');
-            const reversedLines = lines.map(line => {
-                const parts = line.split(',');
-                return `${parts[1]},${parts[0]}${parts[2] ? ',' + parts[2] : ''}`;
-            });
-            document.getElementById('inputText').value = reversedLines.join('\n');
+            button.classList.add('active');
         }
 
         function autoPlay() {
@@ -260,64 +214,10 @@
             autoPlayActive = false;
         }
 
-        function enterTestMode() {
-            testModeActive = true;
-            document.body.innerHTML = `
-                <div id="nowPlaying">再生中: なし</div>
-                <div class="test-buttons">
-                    <button onclick="practiceMode()">Practice</button>
-                    <button onclick="startTest()">Start</button>
-                    <button onclick="stopTest()">Stop</button>
-                    <button onclick="outputScores()">Output</button>
-                </div>
-                <div id="testOutput"></div>
-            `;
-        }
-
-        function practiceMode() {
-            testModeActive = false;
-            location.reload();
-        }
-
-        function startTest() {
-            const keys = Object.keys(scores).filter(key => scores[key] > -5 && scores[key] < 8);
-            if (keys.length === 0) {
-                alert('No more items to test.');
-                return;
-            }
-            const randomKey = keys[Math.floor(Math.random() * keys.length)];
-            const [sth1, sth2] = randomKey.split(',');
-            readText(sth1, sth2, scores[randomKey], null);
-            document.getElementById('testOutput').innerHTML = `
-                <div class="test-buttons">
-                    <button onclick="updateScore('${randomKey}', 3)">Perfect</button>
-                    <button onclick="updateScore('${randomKey}', 1)">OK</button>
-                    <button onclick="updateScore('${randomKey}', -1)">Bad</button>
-                </div>
-            `;
-        }
-
-        function stopTest() {
-            testModeActive = false;
-            document.getElementById('testOutput').innerHTML = '';
-        }
-
-        function updateScore(key, value) {
-            scores[key] = Math.min(8, Math.max(-5, scores[key] + value));
-            document.getElementById('testOutput').innerHTML = '';
-            if (testModeActive) {
-                startTest();
-            }
-            localStorage.setItem('scores', JSON.stringify(scores));
-        }
-
-        function outputScores() {
-            const outputText = Object.entries(scores)
-                .map(([key, value]) => `${key},${value}`)
-                .join('\n');
-            navigator.clipboard.writeText(outputText).then(() => {
-                alert('Scores copied to clipboard!');
-            });
+        function randomPlay() {
+            const buttons = document.querySelectorAll('#output button');
+            const randomIndex = Math.floor(Math.random() * buttons.length);
+            buttons[randomIndex].click();
         }
     </script>
 </body>
