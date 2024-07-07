@@ -154,14 +154,24 @@
     <details>
         <summary>使い方</summary>
         <ol>
-            <li>english, 日本語となるように入力します（ほかの言語や逆方向は未対応）。</li>
+            <li>separatorを選択しておきます。</li>
+<li>separatorを間に挟み、コピペか入力します（例：cat, 猫）</li>
+<li>言語が異なる場合、メニューから変更します。</li>
             <li>auto-playまたはrandom-playを押します。順に、またはランダムに再生します。</li>
             <li>Stopで止めることができます。これは一時停止です。再度再生するときはそこから始まります。</li>
             <li>Resetを押すことで、完全に停止することができます。再度再生するときは最初から始まります。</li>
+<li>反対もやりたい時はreverseを押すことで逆転します。</li>
+<li>言語選択や入力はローカルストレージに保存されています。複数タブ開いている場合は特にお気をつけください（サーバーへの保存はありません）。</li>
         </ol>
     </details>
     <p>なにかあればmisskey.io(<a href="https://misskey.io/@awayatan">@awayatan</a>）またはTwitter/X（<a href="https://twitter.com/awayatan">@awayatan</a>）まで。</p>
+<p>なおこれは自動読み上げであり、発音の正確性を保証するものではありません。特に同じ単語でも異なる発音をするものなどには対処できません。</p>
 <div>
+<label for="separator">Separator:</label>
+    <select id="separator">
+        <option value="comma" selected>Comma</option>
+        <option value="tab">Tab</option>
+    </select>
     <label for="lang1">First Language:</label>
     <select id="lang1">
         <option value="en-GB" selected>English</option>
@@ -221,20 +231,21 @@
             }
         });
 
-        function processText() {
-            const inputText = document.getElementById('inputText').value;
-            const lines = inputText.split('\n');
-            const outputDiv = document.getElementById('output');
-            outputDiv.innerHTML = '';
+       function processText() {
+    const inputText = document.getElementById('inputText').value;
+    const separator = document.getElementById('separator').value === 'comma' ? ',' : '\t';
+    const lines = inputText.split('\n');
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = '';
 
-            lines.forEach((line, index) => {
-                const [sth1, sth2] = line.split(',');
-                const id = index + 1;
-                const element = document.createElement('div');
-                element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
-                outputDiv.appendChild(element);
-            });
-        }
+    lines.forEach((line, index) => {
+        const [sth1, sth2] = line.split(separator);
+        const id = index + 1;
+        const element = document.createElement('div');
+        element.innerHTML = `<button onclick="readText('${sth1}', '${sth2}', this)">${sth1}</button>`;
+        outputDiv.appendChild(element);
+    });
+}
 
         function readText(sth1, sth2, button) {
             const synth = window.speechSynthesis;
@@ -362,11 +373,15 @@ window.onload = function() {
 
     const savedLang1 = localStorage.getItem('lang1');
     const savedLang2 = localStorage.getItem('lang2');
+    const savedSeparator = localStorage.getItem('separator');
     if (savedLang1) {
         document.getElementById('lang1').value = savedLang1;
     }
     if (savedLang2) {
         document.getElementById('lang2').value = savedLang2;
+    }
+    if (savedSeparator) {
+        document.getElementById('separator').value = savedSeparator;
     }
 };
         document.getElementById('inputText').addEventListener('input', function() {
@@ -379,6 +394,11 @@ document.getElementById('lang1').addEventListener('change', function() {
 
 document.getElementById('lang2').addEventListener('change', function() {
     localStorage.setItem('lang2', this.value);
+});
+
+document.getElementById('separator').addEventListener('change', function() {
+    localStorage.setItem('separator', this.value);
+    processText();
 });
 
         // Prevent conflicting button presses
@@ -401,29 +421,47 @@ document.getElementById('lang2').addEventListener('change', function() {
         });
 
 function reverseTextAndLanguages() {
+    // 言語設定を逆にする
     const lang1 = document.getElementById('lang1');
     const lang2 = document.getElementById('lang2');
     const tempLang = lang1.value;
     lang1.value = lang2.value;
     lang2.value = tempLang;
 
+    // 言語設定をローカルストレージに保存
     localStorage.setItem('lang1', lang1.value);
     localStorage.setItem('lang2', lang2.value);
 
+    // テキストエリアの内容を逆にする
     const inputText = document.getElementById('inputText').value;
+    const separator = document.getElementById('separator').value === 'comma' ? ',' : '\t';
     const lines = inputText.split('\n');
     const reversedLines = lines.map(line => {
-        const [part1, part2] = line.split(',');
-        return `${part2},${part1}`;
+        const [part1, part2] = line.split(separator);
+        return `${part2}${separator}${part1}`;
     });
     document.getElementById('inputText').value = reversedLines.join('\n');
 
-localStorage.setItem('inputText', document.getElementById('inputText').value);
+    // テキストエリアの内容をローカルストレージに保存
+    localStorage.setItem('inputText', document.getElementById('inputText').value);
 
     // ボタンのラベルを更新
     processText();
 }
 
+document.getElementById('inputText').addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        const start = this.selectionStart;
+        const end = this.selectionEnd;
+
+        // タブ文字を挿入
+        this.value = this.value.substring(0, start) + '\t' + this.value.substring(end);
+
+        // カーソル位置を調整
+        this.selectionStart = this.selectionEnd = start + 1;
+    }
+});
     </script>
 </body>
 </html>
